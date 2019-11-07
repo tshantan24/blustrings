@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<title>W3.CSS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i&display=swap" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="w3-container w3-black" style="height: 18vh;">
+		</div>
+		<img src="{{ request.get_host }}{% static 'main/images/logo.png' %}" style="width: 20%; height: 45%; position: absolute; bottom: 68%; left: 90vh;">
+		<div class="w3-container">
+			<h3>Greetings, {{ name }}</h3>
+			<p>Thank-you for visiting our website and reaching out to us.</p>
+			<p>Our executive is presently working on being prepared with as much data as one could grab from your company’s online presence. This way, we will most likely have an on-point conversation with you, discussing your specific requirements from our wide scope of services that we provide.</p>
+			<p>We thank-you for your patience to bear with us until we get back to you, at the earliest.</p>
+			<p>Hope you have a nice day ahead.</p>
+			<h5> Yours Sincerely, </h5>
+		</div>
+
+		<div class="w3-container w3-black">
+			<h5 style="font-family: 'Source Sans Pro', sans-serif; font-size: 14px;">Blustrings Entertainment | Create. Curate. Cultivate.</h5> 
+			<p>Copyright © 2019 BluStrings Entertainment Solutions Pvt. Ltd.</p>
+		</div>
+
+	</body>
+</html>

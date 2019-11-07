@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lanh="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/styles.css" %}"> 
+		<link rel="stylesheet" type="text/css" href="{% static "main/css/frontpage.css" %}">
+		<script type="text/javascript" src="{% static "main/js/particles.js" %}"></script>
+	</head>
+	<body>
+		<p id="preloader"></p>
+		<script type="text/javascript" src="{% static "main/js/lottie.js" %}"></script>
+		<script type="text/javascript" src="{% static "main/js/preloader.json" %}"></script>
+		<script type="text/javascript" src="{% static "main/js/preloader.js" %}"></script>
+		<div class="container" id="container">
+	  		<section class="background">
+	  			<div class="intro">
+					<div id="particles-js"></div>
+					<script type="text/javascript" src="{% static "main/js/app.js" %}"></script>
+					<div id='logo'></div>
+					<script type="text/javascript" src="{% static "main/js/logo.json" %}"></script>
+					<script type="text/javascript" src="{% static "main/js/lottie.js" %}"></script>
+					<script type="text/javascript" src="{% static "main/js/logo.js" %}"></script>
+				</div>
+	  		</section>
+	  		<section class="background"></section>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#preloader').delay(4000).fadeOut('slow');
+				$('#container').delay(4000).fadeIn(3000);	
+			});
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script> 
+		<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
+		<script type="text/javascript" src="{% static "main/js/frontpage.js" %}"></script>
+	</body>
+</html>

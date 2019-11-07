@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>BluStrings</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/gallery.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/animations.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/onepage-scroll.css" %}"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/frontpage.css" %}"> -->
+		<!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/secondpage.css" %}"> -->
+		<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script> 
+    <!-- <script src="https://gist.github.com/Michael-McCray/239346425ca9f5e12675d58d4234c590.js"></script>  -->
+    <!-- Compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"> -->
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/contact.css' %}">
+
+
+		<style>
+
+		
+			* {
+			  box-sizing: border-box;
+			}
+			
+			/* Create two equal columns that floats next to each other */
+			.column {
+			  float: left;
+			  width: 50%;
+			  padding: 6vh;
+			  height: 105vh; /* Should be removed. Only for demonstration */
+			}
+			
+			/* Clear floats after the columns */
+			.row:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+
+			.parallax{
+				z-index: 1;
+				background-attachment: fixed;
+	  			background-position: center;
+	  			background-repeat: no-repeat;
+				background-size: cover;
+			}
+
+			.intro-particles{
+				z-index: 0;
+				background-attachment: fixed;
+	  			background-position: center;
+	  			background-repeat: no-repeat;
+				background-size: cover;
+			}
+
+			.row{
+				z-index: 10;
+				height: 100vh;
+				width: 100%;
+			}
+
+
+
+				/* Animation */
+
+				@keyframes fadeInUp {
+					from {
+						transform: translate3d(0,20vh,0)
+					}
+
+					to {
+						transform: translate3d(0,0,0);
+						opacity: 1
+					}
+				}
+
+				@-webkit-keyframes fadeInUp {
+					from {
+						transform: translate3d(0,20vh,0)
+					}
+
+					to {
+						transform: translate3d(0,0,0);
+						opacity: 1
+					}
+				}
+
+				@keyframes fadeOutDown {
+					from {
+						transform: translate3d(0,0,0);
+						opacity: 1;
+					}
+
+					to {
+						transform: translate3d(0,40px,0);
+						opacity: 0;
+					}
+				}
+
+				@-webkit-keyframes fadeOutDown {
+					from {
+						transform: translate3d(0,0,0);
+						opacity: 1;
+					}
+
+					to {
+						transform: translate3d(0,40px,0);
+						opacity: 0;
+					}
+				}
+
+				.animated {
+					animation-duration: 1s;
+					animation-fill-mode: both;
+					-webkit-animation-duration: 1s;
+					-webkit-animation-fill-mode: both
+				}
+
+				.animatedFadeInUp {
+					opacity: 0
+				}
+
+				.fadeInUp {
+					opacity: 0;
+					animation-name: fadeInUp;
+					-webkit-animation-name: fadeInUp;
+				}
+
+				.fadeOutDown{
+					opacity: 0;
+					animation-name: fadeOutDown;
+					-webkit-animation-name:fadeOutDown ;
+				}
+
+			</style>
+	</head>
+	<body>	
+		<div id="preloader"></div>
+		<div class="main" id="fullpage">
+			<div id="mySidenav" class="sidenav">
+			  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			  <a href="#">About</a>
+			  <a href="#">Services</a>
+			  <a href="#">Clients</a>
+			  <a href="#">Contact</a>
+			</div>
+			<span style="font-size:30px;cursor:pointer;color:white;" onclick="openNav()">&#9776;</span>
+			<script>
+				function openNav() {
+				  document.getElementById("mySidenav").style.width = "250px";
+				}
+
+				function closeNav() {
+				  document.getElementById("mySidenav").style.width = "0";
+				}
+			</script>
+			<section id="first" class="section parallax section-intro">
+				<div class="section__content">
+					<div id="particles-js" class="intro-particles"></div>
+					<div class="intro-logo" style="position: fixed;"></div>
+				</div>
+			</section>
+	<!-- 
+			<section class="section section--animatable-content section--about">
+				<div class="section__content">
+					<div class="section__partition partition partition--right">
+						<div class="partition__content">
+							<img src="../static/main/images/about_1.jpg" alt="About Us">
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section section--animatable-content section--e2e">
+				<div class="section__content">
+					<div class="section__partition partition partition--right">
+						<div class="partition__content">
+							<img src="../static/main/images/end_1.jpg" alt="End 2 End Services">
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section section--animatable-content section--work">
+				<div class="section__content">
+					<div class="section__partition partition partition--right">
+						<div class="partition__content">
+							<img src="../static/main/images/our_work.jpg" alt="Our Work">
+						</div>
+					</div>
+				</div>
+			</section> -->
+			
+			<section class="section middle" id="middle" style="z-index: 100;">
+				<div  id="about" class="row">
+					<div id="aboutcol" class="column" style="background-image:url('../static/main/images/bgg1.png');overflow: hidden;cursor:default">
+						<h2 id="abouttitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh">About Us</h2>
+						<p id="about-para" class="animated animatedFadeInUp" style="text-align: justify; padding-top: 20px;" >BluStrings is a creation 
+							of the 21st Century, bringing in experience from different fields of science, communication and
+							marketing; we offer a very niche end-product to our clients. We integrate our experiences in event planning and
+							management that translates into our deliverables. <br> <br>
+							Having been in the industry and sharing 18+ man-years of experience, we believe in our commitment to guarantee and deliver a successful event with seamless execution; providing a mix of
+							professional services and creativity. We have created, managed & executed a plethora of events across the board. <br> <br>
+							With a dedicated team that covers all avenues in building your project right from the ground up, we conceptualize and develop
+							on comprehensive plans and ideas that suit your budget. Our team is with you at every step of the way.
+						</p>
+					</div>
+					<div id="aboutimg" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/about_1.jpg');background-size:cover;">
+					</div>
+				</div>
+			</section>
+
+			<section class="section middle1">
+				<div  id="e2e" class="row">
+					<div id="e2ecol" class="column" style="background-image:url('../static/main/images/bgg2.png');overflow: hidden;cursor:default">
+						<h2 id="e2etitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh" >End to End Event Solutions</h2>
+						<p id="e2e-para" class="animated animatedFadeInUp" style="text-align:justify; padding-top: 20px;">BluStrings understands the 
+							importance of celebrating an occasion. As the years pass, Social events, Cultural Shows,
+							Music Festivals, Concept Events & Club Shows have only grown in number. At BluStrings we create and cater the perfect
+							package with all-inclusive services from finalization of the venue to the complete production and execution of the show.
+							Our team comprises of visionaries that are driven to inspire, create and add value to every project we take on with our
+							clients. We believe in cost-effective performances, accountability and maintain timelines to deliver an excellent
+							product as promised.
+						</p>
+					</div>
+					<div id="e2e1img" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/end_1.jpg');background-size:cover;">
+					</div>
+				</div>
+			</section>
+			<section class="section middle2" >
+				<div  id="our_work" class="row">
+					<div id="our_workcol" class="column" style="background-image:url('../static/main/images/bgg3.png');overflow: hidden;cursor:default">
+						<h2 id="ourtitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh">Our Work</h2>
+						<p id="our-para" class="animated animatedFadeInUp" style="text-align: justify; padding-top: 20px;">Our Exhibit showcases 
+							events across the various segments we have encountered. Each event came with its own sets of
+							challenges and risk factors. BluStrings believes in the mantra of Creation, Cultivation and Curation through which we
+							have been able to overcome any set of challenges resulting in these events that were impeccable and glamorous to the
+							audience. BluStrings lays utmost importance on Quality, Inventiveness & Perfection to ensure that your event/show runs
+							as crafted, whether it’s for a glamorous appeal or a night for everyone to remember.
+						</p>
+					</div>
+					<div id="our_img" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/our_work.jpg');background-size:cover;">
+					</div>
+				</div>
+			</section>
+			<style>
+				* {box-sizing: border-box}
+
+				
+				/* Style tab links */
+				.tablink {
+				  background-color: #555;
+				  color: black;
+				  float: left;
+				  border: none;
+				  outline: none;
+				  cursor: pointer;
+				  padding: 5vh 6vh;
+				  font-size: 17px;
+				  width: 50%;
+				  font-family: 'Raleway';
+				  font-weight: 700;
+				}
+				
+				.tablink:hover {
+				  background-color: #777;
+				}
+				
+				/* Style the tab content (and add height:100% for full page content) */
+				.tabcontent {
+				  color: black;
+				  display: none;
+				  padding: 3vh 5vh;
+				  height: 100vh;
+				}
+				
+				#Home {background-image: url('../static/main/images/bg8.png');}
+				#News {background-image: url('../static/main/images/bg9.png');}
+			</style>
+			<section class="section" id="last">
+				<div id="part3" style="width: 100%;">
+					<button class="tablink" onclick="openPage('Home', this)"  id="defaultOpen">SEGMENTS</button>
+					<button class="tablink" onclick="openPage('News', this)">SERVICES</button>
+					<div id="Home" class="tabcontent">	
+						<div class="grid-container">
+							<div  class="grid-item">
+								<div id="seg1" class="service">
+									<img src="../static/main/images/icon/conferences.png" class="service-image">
+									<h4 class="service-description">CONFERENCES</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="seg2" class="service">
+									<img src="../static/main/images/icon/corporate.png" class="service-image">
+									<h4 class="service-description">CORPORATE EVENTS</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="seg3" class="service">
+										<img src="../static/main/images/icon/social_events.png" class="service-image">
+										<h4 class="service-description">SOCIAL EVENTS</h4>
+								</div>
+							</div>  
+							<div class="grid-item">
+								<div id="seg4" class="service">
+										<img src="../static/main/images/icon/end_to_end_av_solutions.png" class="service-image">
+										<h4 class="service-description">END TO END EVENT SOLUTIONS</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="seg5" class="service">
+									<img src="../static/main/images/icon/entertainment.png" class="service-image">
+									<h4 class="service-description">ENTERTAINMENT SHOWS</h4>
+								</div>
+						  	</div>
+							<div class="grid-item">
+								<div id="seg6" class="service">
+									<img src="../static/main/images/icon/cultural_shows.png" class="service-image">
+									<h4 class="service-description">CULTURAL SHOWS</h4>
+								</div>
+							</div>  
+							<div class="grid-item">
+								<div id="seg7" class="service">
+									<img src="../static/main/images/icon/branding.png" class="service-image">
+									<h4 class="service-description">TRADE SHOWS &amp; EXHIBITIONS</h4>
+								</div>
+							</div> 
+						</div>
+					</div>
+				
+					<div id="News" class="tabcontent">
+						<style>
+							.grid-container {
+							  display: grid;
+							  grid-template-columns: 25% 25% 25% 25%;
+							  background-color: transparent;
+							  padding: 10px;
+							  margin-top:8%;
+							}
+							.grid-item {
+							  background-color: transparent;
+							  border: 0px solid rgba(0, 0, 0, 0.8);
+							  padding: 20px;
+							  height: 25vh;
+							  font-size: 10px;
+							  text-align: center;
+							  justify-content: center;
+							  justify-items: center;
+							}
+							.service-image{
+								height: 80px;
+								width:80px;
+								margin-left: 35%;
+							}
+							.service{
+								text-align: center;
+							}
+						</style>
+						<div class="grid-container">
+						  	<div class="grid-item">
+								<div id="ser1" class="service">
+									<img src="../static/main/images/icon/sound.png" class="service-image">
+									<h4 class="service-description">SOUND</h4>
+								</div>
+						  	</div>
+						  	<div class="grid-item">
+						  		<div id="ser2" class="service">
+									<img src="../static/main/images/icon/lights.png" class="service-image">
+									<h4 class="service-description">LIGHTS</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser3" class="service">
+									<img src="../static/main/images/icon/vision.png" class="service-image">
+									<h4 class="service-description">VISION</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser4" class="service">
+									<img src="../static/main/images/icon/registration.png" class="service-image">
+									<h4 class="service-description">REGISTRATION MANAGEMENT</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser5" class="service">
+									<img src="../static/main/images/icon/photography.png" class="service-image">
+									<h4 class="service-description">PHOTOGRAPHY &amp; VIDEOGRAPHY</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser6" class="service">
+									<img src="../static/main/images/icon/digital_systems.png" class="service-image">
+									<h4 class="service-description">DIGITAL SYSTEMS</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser7" class="service">
+									<img src="../static/main/images/icon/staging_styling.png" class="service-image">
+									<h4 class="service-description">STAGING &amp; STYLING</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser8" class="service">
+									<img src="../static/main/images/icon/branding.png" class="service-image">
+									<h4 class="service-description">BRANDING</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser9" class="service">
+									<img src="../static/main/images/icon/artist_management.png" class="service-image">
+									<h4 class="service-description">ARTIST MANAGEMENT</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser10" class="service">
+									<img src="../static/main/images/icon/manpower.png" class="service-image">
+									<h4 class="service-description">MANPOWER MANAGEMENT</h4>
+								</div>
+							</div>  
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section class="section">
+				<div id="hero-slider">
+        			<div id="slideshow">
+            			<div id="slides-main" class="slides">
+                			<div class="slide" data-index="0">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="1">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="2">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="3">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="4">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="5">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="6">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="7">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
+                    			</div>
+                			</div>
+                			<div class="slide" data-index="8">
+                    			<div class="abs-mask">
+                        			<div class="slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
+                    			</div>
+                			</div>
+            			</div>
+            			<div id="slides-aux" class="slides mask">
+			                <h2 class="slide-title slide" data-index="0"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="1"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="2"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="3"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="4"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="5"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="6"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="7"><a href="#"></a></h2>
+			                <h2 class="slide-title slide" data-index="8"><a href="#"></a></h2>
+            			</div>
+        			</div>
+        			<div id="info">
+            			<div class="slider-title-wrapper">
+	                		<span class="line"></span>
+	                		<h1 class="slider-title">
+	                    		<span>GALLERY</span>
+	                		</h1>
+            			</div>
+        			</div>
+        			<nav id="slider-nav">
+            			<span class="current">01</span>
+            			<span class="sep"></span>
+            			<span class="total">09</span>
+        			</nav>
+    			</div>
+    	
+			</section>
+			<section class="section">
+				<div class="row cont">
+      <div class="map-container">
+        <iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+        </iframe>
+        <a href="https://www.enable-javascript.net"></a>
+      </div>
+
+      <div class="contact-container">
+        <div class="row contact-head">
+          <h1 style="border-bottom: 5px solid #000;padding-bottom:1vh; width: 50%;">Contact Us</h1>
+        </div>
+        <div class="row contact-form z-depth-2">
+          <form action="" class="col s12" id="contact">
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_name" type="text" name="name" id="name" class="validate" required>
+                <label for="icon_name">Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">work</i>
+                <input id="icon_company" type="tel" class="validate" name="company">
+                <label for="icon_company">Company</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">email</i>
+                <input id="icon_email" type="text" class="validate" name="email" required>
+                <label for="icon_email">Email</label>
+                
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="icon_telephone" type="tel" class="validate" name="phone" required>
+                <label for="icon_telephone">Phone Number</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
+                </button>
+              </div>
+            </div>
+            <div id="alerts" class="row hidden">
+              <div class="alert col s12">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <span id="error-message"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row contact-info">
+          <div class="row">
+            <i class="material-icons prefix cen" id="icon_location">location_on</i>
+            <span class="bluInfo">#6-3-661/4/A, 1st Floor Navajyothi Apts, <br>Sangeet Nagar, Somajiguda, Hyderabad (T.S) - 500082</span>              
+          </div>
+          <div class="row">
+            <i class="material-icons prefix ten" id="icon_telephone_blu">phone</i>
+            <span class="bluInfo">+91 7893274386</span>
+          </div>
+          <div class="row">
+            <i class="material-icons prefix ten" id="icon_email_blu">email</i>
+            <span class="bluInfo">hello@blustrings.com</span>
+          </div>
+        </div>
+
+
+        <script>
+          /*function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+                }
+              }
+            }
+            return cookieValue;
+          }
+          var csrftoken = getCookie('csrftoken');*/
+
+          var csrftoken = Cookies.get('csrftoken');
+
+          function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          }
+        
+          $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+              if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              }
+            }
+          });
+
+
+          $('#contact').on('submit',function(e){
+            e.preventDefault();
+            var name = $('#icon_name').val();
+            var company = $('#icon_company').val();
+            var email = $('#icon_email').val();
+            var phone = $('#icon_telephone').val();
+            //var message = $('#message').val();
+
+            $.ajax({
+              type: "post",
+              url: 'test/',
+              datatype:'jsonp',
+              data: {
+              'name': name,
+              'company': company,
+              'email': email,
+              'phone': phone,
+              //'message': message,
+              },
+            }).done(function(response) {
+              console.log(response);
+              $('#alerts').show();
+              $('#error-message').text(response.err_msg);
+            })
+          
+          });
+
+        </script>
+        
+
+        <!--  Alert box
+        <div id="alerts" class="row hidden">
+          <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <span id="error-message"></span>
+          </div>
+        </div> -->
+
+      </div>
+      
+    </div>
+			</section>
+			<script>
+				function openPage(pageName,elmnt) {
+				  var i, tabcontent, tablinks;
+				  tabcontent = document.getElementsByClassName("tabcontent");
+				  for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				  }
+				  tablinks = document.getElementsByClassName("tablink");
+				  for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].style.backgroundColor = "#777";
+					tablinks[i].style.color = "#fff";
+				  }
+				  document.getElementById(pageName).style.display = "block";
+				  elmnt.style.backgroundColor = "transparent";
+				  elmnt.style.color = "#000";
+
+
+				  $('.service').fadeOut(10);
+				  if(pageName == 'Home'){
+
+					  for(var i=0;i<7;i++){
+							
+						$('#seg'+(i+1)).delay(i*200).fadeIn(300);
+						
+					  }
+				  }else{
+					for(var i=0;i<10;i++){
+							
+							$('#ser'+(i+1)).delay(i*200).fadeIn(300);
+							
+						  }
+				  }
+
+				}
+				
+				// Get the element with id="defaultOpen" and click on it
+				document.getElementById("defaultOpen").click();
+			</script>
+    </div>
+    
+		<script type="text/javascript" src="{% static 'main/js/gallery.js' %}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.js"></script>
+		<script type="text/javascript" src="{% static 'main/js/particles.js' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/lottie.js' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/preloader.json' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/logo.json' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/lottie-animations.js' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/app.js' %}"></script>
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+		<script type="text/javascript" src="{% static 'main/js/fullpage.extensions.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'main/js/fullpage.js' %}"></script>
+    
+		<script>
+			var secs = ['#first','#middle','#last'];
+			var aboutTop = $('#middle').offset().top;
+			var lastTop = $('#last').offset().top;
+			var currentPos = 0;
+			$(window).ready(function(){
+
+				$('.service').fadeOut();
+				for(var i=0;i<7;i++){
+									
+									$('#seg'+(i+1)).fadeOut();
+														
+									}
+
+			});
+
+
+			// $(window).bind('mousewheel DOMMouseScroll onmousewheel touchmove scroll', function(event) {
+				
+				
+			// 	var winTop = $(window).scrollTop();
+
+			// 	if(winTop > aboutTop){
+			// 		$('html,body').animate({
+			// 			scrollTop: $('#middle').offset().top
+			// 		},"slow");
+			// 	}
+
+			// 	if(winTop > lastTop){
+					
+			// 	}
+				
+				
+			// });
+			$('#e2e-sec').hide();
+			$('#our-sec').hide();
+			$('.service').fadeOut();
+			var $window = $(window), previousScrollTop = 0, scrollLock = false;
+
+			// var maxSlides = 2;
+			// var currSlide = 0;
+
+			// var slides = ['','#e2e-sec','#our-sec']
+
+			// $window.scroll(function(event) { 
+			// 	var winTop = $(window).scrollTop();
+
+			// 	if (event.originalEvent.wheelDelta >= 0) {
+			// 		console.log('Scroll up');
+			// 		if(currSlide > 0) currSlide-=1;
+					
+					
+			//     }
+			//     else {
+			// 		if(currSlide < maxSlides) currSlide +=1;
+			// 		$(slides[currSlide]).fadeIn(1000);
+			// 		console.log('Scroll down');
+			// 		if (currSlide == 0)
+			// 		{scrollLock = !scrollLock;}
+			//     }
+
+			// 	if(winTop >= aboutTop)
+			// 	scrollLock = true;
+
+
+			// 	// set (bool)scrollLock prior to this to either lock or unlock
+			//     if(scrollLock) {
+			// 		$window.scrollTop(previousScrollTop);
+			//     }
+
+			//     previousScrollTop = $window.scrollTop();
+
+			// });
+
+			var paras = ['about-para','e2e-para','our-para']
+			var images = ['aboutimg','e2e1img','our_img']
+			var titles = ['abouttitle','e2etitle','ourtitle']
+			var currSlides = 0;
+
+			new fullpage("#fullpage",{
+				parallax:true,
+				parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+				scrollingSpeed:900,
+				afterLoad:function(origin,destination,direction){
+
+						console.log('origin:'+origin.index+'dest:'+destination.index);
+						for(var x=0;x<3;x++){
+							var dc = document.getElementById(paras[x]);
+							dc.classList.remove('fadeInUp');
+						}
+						for(var x=0;x<3;x++){
+							var dc = document.getElementById(images[x]);
+							dc.classList.remove('fadeInUp');
+						}
+						for(var x=0;x<3;x++){
+							var dc = document.getElementById(titles[x]);
+							dc.classList.remove('fadeInUp');
+						}
+					
+					
+					if(direction == 'down'){
+						if(destination.index >=1 && destination.index <4){
+						var dc2 = document.getElementById(titles[destination.index-1]);
+					dc2.classList.remove('fadeInUp');
+					dc2.classList.add('fadeInUp');
+					var dc = document.getElementById(paras[destination.index-1]);
+					dc.classList.remove('fadeInUp');
+					setTimeout(function(){
+						dc.classList.add('fadeInUp');
+					},200);
+					var dc1 = document.getElementById(images[destination.index-1]);
+					dc1.classList.remove('fadeInUp');
+					setTimeout(function(){
+						dc1.classList.add('fadeInUp');
+					},400);
+					
+					}
+					}
+
+
+					if(direction == 'up'){
+						
+
+					if(destination.index >=1 && destination.index <4){
+					var dc2 = document.getElementById(titles[destination.index-1]);
+					dc2.classList.remove('fadeInUp');
+					dc2.classList.add('fadeInUp');
+					var dc = document.getElementById(paras[destination.index-1]);
+					dc.classList.remove('fadeInUp');
+					setTimeout(function(){
+						dc.classList.add('fadeInUp');
+					},200);
+					var dc1 = document.getElementById(images[destination.index-1]);
+					dc1.classList.remove('fadeInUp');
+					setTimeout(function(){
+						dc1.classList.add('fadeInUp');
+					},400);
+					}
+
+
+					}
+					if(destination.index == 3){
+						$('.service').fadeOut("fast");
+					}
+					if(destination.index == 4){
+						
+							if(origin.index == 3)
+							{	$('.service').hide();
+							
+							  for(var i=0;i<7;i++){
+									
+								$('#seg'+(i+1)).delay(i*200).fadeIn(300);
+
+								
+							  }
+							  for(var i=0;i<11;i++){
+									
+	
+									$('#ser'+(i+1)).delay(i*200).fadeIn(300);
+									
+								  }
+							}
+							  
+						  
+					}
+					
+					
+				},
+				onLeave:function(origin,destination,direction){
+						
+					for(var x=0;x<3;x++){
+							var dc = document.getElementById(paras[x]);
+							dc.classList.remove('fadeOutDown');
+						}
+						for(var x=0;x<3;x++){
+							var dc = document.getElementById(images[x]);
+							dc.classList.remove('fadeOutDown');
+						}
+						for(var x=0;x<3;x++){
+							var dc = document.getElementById(titles[x]);
+							dc.classList.remove('fadeOutDown');
+						}
+					
+					
+					if(direction == 'down'){
+						if(destination.index >=1 && destination.index <3){
+						var dc2 = document.getElementById(titles[destination.index]);
+					dc2.classList.remove('fadeOutDown');
+					dc2.classList.add('fadeOutDown');
+					var dc = document.getElementById(paras[destination.index]);
+					dc.classList.remove('fadeOutDown');
+					setTimeout(function(){
+						dc.classList.add('fadeOutDown');
+					},200);
+					var dc1 = document.getElementById(images[destination.index]);
+					dc1.classList.remove('fadeOutDown');
+					setTimeout(function(){
+						dc1.classList.add('fadeOutDown');
+					},400);
+					
+					}
+					}
+
+
+					if(direction == 'up'){
+						
+
+					if(destination.index >=1 && destination.index <3){
+					var dc2 = document.getElementById(titles[destination.index]);
+					dc2.classList.remove('fadeOutDown');
+					dc2.classList.add('fadeOutDown');
+					var dc = document.getElementById(paras[destination.index]);
+					dc.classList.remove('fadeOutDown');
+					setTimeout(function(){
+						dc.classList.add('fadeOutDown');
+					},200);
+					var dc1 = document.getElementById(images[destination.index]);
+					dc1.classList.remove('fadeOutDown');
+					setTimeout(function(){
+						dc1.classList.add('fadeOutDown');
+					},400);
+					}
+
+
+					}
+				}
+			});
+				
+
+
+				var page2_sec = ['#aboutimg','#e2eimg','#our_workimg'];		
+		</script>
+	</body>
+</html>

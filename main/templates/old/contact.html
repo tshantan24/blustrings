@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html lanh="en">
+	<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact Us</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>  
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "main/css/contact.css" %}">
+  </head>
+
+  <body>
+    <div class="row cont">
+      <div class="map-container">
+        <iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+        </iframe>
+        <a href="https://www.enable-javascript.net"></a>
+      </div>
+
+      <div class="contact-container">
+        <div class="row contact-head">
+          <h2>Contact Us</h2>
+          <hr/>
+        </div>
+        <div class="row contact-form z-depth-2">
+          <form action="" class="col s12" id="contact">
+            {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_name" type="text" name="name" id="name" class="validate" required>
+                <label for="icon_name">Name</label>
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">work</i>
+                <input id="icon_company" type="tel" class="validate" name="company">
+                <label for="icon_company">Company</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <i class="material-icons prefix">email</i>
+                <input id="icon_email" type="text" class="validate" name="email" required>
+                <label for="icon_email">Email</label>
+                <!-- <span class="helper-text" data-error="Invalid Email" data-success="Valid Email"></span> -->
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">phone</i>
+                <input id="icon_telephone" type="tel" class="validate" name="phone" required>
+                <label for="icon_telephone">Phone Number</label>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="input-field col s12">
+                <textarea id="message" class="materialize-textarea" name="message" required></textarea>
+                <label for="message">Comments or Questions</label>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
+                </button>
+              </div>
+            </div>
+            <div id="alerts" class="row hidden">
+              <div class="alert col s12">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <span id="error-message"></span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row contact-info">
+          <div class="row">
+            <i class="material-icons prefix cen" id="icon_location">location_on</i>
+            <span class="bluInfo">#6-3-661/4/A, 1st Floor Navajyothi Apts, <br>Sangeet Nagar, Somajiguda, Hyderabad (T.S) - 500082</span>              
+          </div>
+          <div class="row">
+            <i class="material-icons prefix ten" id="icon_telephone_blu">phone</i>
+            <span class="bluInfo">+91 7893274386</span>
+          </div>
+          <div class="row">
+            <i class="material-icons prefix ten" id="icon_email_blu">email</i>
+            <span class="bluInfo">hello@blustrings.com</span>
+          </div>
+        </div>
+
+
+        <script>
+          /*function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+              var cookies = document.cookie.split(';');
+              for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+                }
+              }
+            }
+            return cookieValue;
+          }
+          var csrftoken = getCookie('csrftoken');*/
+
+          var csrftoken = Cookies.get('csrftoken');
+
+          function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+          }
+        
+          $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+              if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              }
+            }
+          });
+
+
+          $('#contact').on('submit',function(e){
+            e.preventDefault();
+            var name = $('#icon_name').val();
+            var company = $('#icon_company').val();
+            var email = $('#icon_email').val();
+            var phone = $('#icon_telephone').val();
+            //var message = $('#message').val();
+
+            $.ajax({
+              type: "post",
+              url: 'test/',
+              datatype:'jsonp',
+              data: {
+              'name': name,
+              'company': company,
+              'email': email,
+              'phone': phone,
+              //'message': message,
+              },
+            }).done(function(response) {
+              console.log(response);
+              $('#alerts').show();
+              $('#error-message').text(response.err_msg);
+            })
+          
+          });
+
+        </script>
+        
+
+        <!--  Alert box
+        <div id="alerts" class="row hidden">
+          <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <span id="error-message"></span>
+          </div>
+        </div> -->
+
+      </div>
+      
+    </div>
+  </body>
+
+</html>
