@@ -11,7 +11,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-particlesJS.load('particles-js', '../../static/js/particlesjs-config.json', function() {
+particlesJS.load('particles-js', '../static/main/js/particlesjs-config.json', function() {
   console.log('callback - particles.js config loaded');
 });
 

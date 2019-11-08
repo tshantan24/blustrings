@@ -232,11 +232,12 @@ body {
 #slider-nav {
   position: absolute;
   top: 2rem;
-  right: calc(20% - 130px/2);
+  right: calc(20% - 120px/2);
   display: flex;
   align-items: center;
   justify-content: space-around;
   z-index: 500;
+  max-width: 120px !important;
 }
 
 /* line 205, D:/WEB/Projects/Slider/assets/scss/style.scss */
