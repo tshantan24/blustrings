@@ -6,41 +6,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>BluStrings</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/gallery.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/animations.css' %}">
-    <!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/onepage-scroll.css" %}"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/frontpage.css" %}"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="{% static "main/css/secondpage.css" %}"> -->
-		<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script> 
-    <!-- <script src="https://gist.github.com/Michael-McCray/239346425ca9f5e12675d58d4234c590.js"></script>  -->
-    <!-- Compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"> -->
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/materialize.css' %}" media="screen,projection">
-    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'main/css/contact.css' %}">
-
-
+    	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    	<link rel="stylesheet" type="text/css" href="{% static 'main/css/materialize.css' %}" media="screen,projection">
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="{% static 'main/css/contact.css' %}">
 		<style>
-		
 			* {
 			  box-sizing: border-box;
 			}
-			
+
 			/* Create two equal columns that floats next to each other */
 			.column {
 			  float: left;
 			  width: 50%;
 			  padding: 6vh;
-			  height: 100vh; /* Should be removed. Only for demonstration */
+			  height: 100%; /* Should be removed. Only for demonstration */
 			}
-			
+
 			/* Clear floats after the columns */
 			.row-non:after {
 			  content: "";
@@ -61,7 +50,7 @@
 				background-attachment: fixed;
 	  			background-position: center;
 	  			background-repeat: no-repeat;
-				background-size: cover;
+				background-size: cover !important; /* EDIT 0 (added !important) */
 			}
 
 			.row-non{
@@ -70,319 +59,467 @@
 				width: 100%;
 			}
 
+			/* Animation */
 
-
-				/* Animation */
-
-				@keyframes fadeInUp {
-					from {
-						transform: translate3d(0,20vh,0)
-					}
-
-					to {
-						transform: translate3d(0,0,0);
-						opacity: 1
-					}
+			@keyframes fadeInUp {
+				from {
+					transform: translate3d(0,20vh,0)
 				}
 
-				@-webkit-keyframes fadeInUp {
-					from {
-						transform: translate3d(0,20vh,0)
-					}
+				to {
+					transform: translate3d(0,0,0);
+					opacity: 1
+				}
+			}
 
-					to {
-						transform: translate3d(0,0,0);
-						opacity: 1
-					}
+			@-webkit-keyframes fadeInUp {
+				from {
+					transform: translate3d(0,20vh,0)
 				}
 
-				@keyframes fadeOutDown {
-					from {
-						transform: translate3d(0,0,0);
-						opacity: 1;
-					}
+				to {
+					transform: translate3d(0,0,0);
+					opacity: 1
+				}
+			}
 
-					to {
-						transform: translate3d(0,40px,0);
-						opacity: 0;
-					}
+			@keyframes fadeOutDown {
+				from {
+					transform: translate3d(0,0,0);
+					opacity: 1;
 				}
 
-				@-webkit-keyframes fadeOutDown {
-					from {
-						transform: translate3d(0,0,0);
-						opacity: 1;
-					}
-
-					to {
-						transform: translate3d(0,40px,0);
-						opacity: 0;
-					}
-				}
-
-				.animated {
-					animation-duration: 1s;
-					animation-fill-mode: both;
-					-webkit-animation-duration: 1s;
-					-webkit-animation-fill-mode: both
-				}
-
-				.animatedFadeInUp {
-					opacity: 0
-				}
-
-				.fadeInUp {
+				to {
+					transform: translate3d(0,40px,0);
 					opacity: 0;
-					animation-name: fadeInUp;
-					-webkit-animation-name: fadeInUp;
+				}
+			}
+
+			@-webkit-keyframes fadeOutDown {
+				from {
+					transform: translate3d(0,0,0);
+					opacity: 1;
 				}
 
-				.fadeOutDown{
+				to {
+					transform: translate3d(0,40px,0);
 					opacity: 0;
-					animation-name: fadeOutDown;
-					-webkit-animation-name:fadeOutDown ;
+				}
+			}
+
+			.animated {
+				animation-duration: 1s;
+				animation-fill-mode: both;
+				-webkit-animation-duration: 1s;
+				-webkit-animation-fill-mode: both
+			}
+
+			.animatedFadeInUp {
+				opacity: 0
+			}
+
+			.fadeInUp {
+				opacity: 0;
+				animation-name: fadeInUp;
+				-webkit-animation-name: fadeInUp;
+				animation-duration: 500ms;
+			}
+
+			.fadeOutDown{
+				opacity: 0;
+				animation-name: fadeOutDown;
+				animation-duration: 500ms;
+			}
+
+
+
+			/* Gradient backgrounds */
+			#aboutcol {
+				background: linear-gradient(to bottom, rgba(255,236,141,1) 0%,rgba(255,232,105,1) 100%);
+			}
+
+			#e2ecol {
+				background: linear-gradient(to bottom, rgba(255,230,99,1) 0%,rgba(255,226,64,1) 100%);
+			}
+
+			#our_workcol {
+				background: linear-gradient(to bottom, rgba(255,226,64,1) 0%,rgba(255,220,29,1) 100%);
+			}
+
+			/* media queries for responsive layout */
+			@media (max-width: 768px) {
+				.column {
+					float: none;
+					width: 100%;
 				}
 
+				/* stack columns */
+				.fp-tableCell>.row-non {
+					position: relative;
+				}
+
+				.fp-tableCell>.row-non>.column {
+					position: absolute;
+				}
+
+				.fp-tableCell>.row-non>.column:nth-child(1) {
+					z-index: 1;
+				}
+
+				/* decrease font sizes on small screens */
+				.fp-tableCell>.row-non>.column>h2 {
+					font-size: 32px;
+				}
+
+				.fp-tableCell>.row-non>.column:nth-child(1)>p {
+					font-size: 16px!important;
+				}
+
+				/* translucent backgrounds */
+				#aboutcol {
+					background: linear-gradient(to bottom, rgba(255,236,141,0.75) 0%,rgba(255,232,105,0.75) 100%);
+				}
+
+				#e2ecol {
+					background: linear-gradient(to bottom, rgba(255,230,99,0.75) 0%,rgba(255,226,64,0.75) 100%);
+				}
+
+				#our_workcol {
+					background: linear-gradient(to bottom, rgba(255,226,64,0.75) 0%,rgba(255,220,29,0.75) 100%);
+				}
+			}
+			@media (max-width: 360px) {
+				.fp-tableCell>.row-non>.column>h2 {
+				font-size: 24px;
+			}
+
+			.fp-tableCell>.row-non>.column:nth-child(1)>p {
+				font-size: 12px!important;
+			}
+			@media (max-width: 320px) {
+				.fp-tableCell>.row-non>.column>h2 {
+				font-size: 24px;
+			}
+
+			.fp-tableCell>.row-non>.column:nth-child(1)>p {
+				font-size: 12px !important;
+			}
 		</style>
-  </head>
-  
-	<body>	
-    <div id="preloader"></div>
+  	</head>
+	<body>
+    	<div id="preloader"></div>
+	    <style>
+	      .sideNav {
+	        height: 100%;
+	        width: 0;
+	        position: fixed;
+	        z-index: 720;
+	        top: 0;
+	        right: 0;
+	        background-color: #111;
+	        overflow-x: hidden;
+	        transition: 0.3s;
+	        padding-top: 60px;
+	      }
 
-    <style>
-      .sideNav {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 720;
-        top: 0;
-        right: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.3s;
-        padding-top: 60px;
-      }
-      
-      .sideNav a {
-        padding: 8px 8px 8px 32px;
-        text-decoration: none;
-        font-size: 20px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
-      
-      .sideNav a:hover {
-        color: #f1f1f1;
-      }
-      
-      .sideNav .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-      
-      @media screen and (max-height: 450px) {
-        .sideNav {padding-top: 15px;}
-        .sideNav li {font-size: 18px;}
-      }
+	      .sideNav a {
+	        padding: 8px 8px 8px 32px;
+	        text-decoration: none;
+	        font-size: 20px;
+	        color: #818181;
+	        display: block;
+	        transition: 0.3s;
+	      }
 
-      .menu-icon{
-        font-size: 30px;
-        cursor: pointer;
-        color: white;
-        z-index: 700;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-      }
-    </style>
+	      .sideNav a:hover {
+	        color: #f1f1f1;
+	      }
 
-    <div id="sideNav" class="sideNav">
-      <ul id="menu">
-        <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
-        <li data-menuanchor="aboutUs"><a href="#aboutUs">About Us</a></li>
-        <li data-menuanchor="end2end"><a href="#end2end">End to End Event Solutions</a></li>
-        <li data-menuanchor="work"><a href="#work">Our Work</a></li>
-        <li data-menuanchor="sands"><a href="#sands">Segments &amp; Services</a></li>
-        <li data-menuanchor="gallery"><a href="#gallery">Gallery</a></li>
-        <li data-menuanchor="contactUs"><a href="#contactUs">Contact Us</a></li>
-      </ul>
-    </div>
-    <span class="menu-icon" onclick="openNav()">&#9776;</span>
+	      .sideNav .closebtn {
+	        position: absolute;
+	        top: 0;
+	        right: 25px;
+	        font-size: 36px;
+	        margin-left: 50px;
+	      }
 
-    <!-- Regular Action for Navbar -->
-    <script>
-      function openNav() {
-        document.getElementById("sideNav").style.width = "300px";
-      }
+	      @media screen and (max-height: 450px) {
+	        .sideNav {padding-top: 15px;}
+	        .sideNav li {font-size: 18px;}
+	      }
 
-      function closeNav() {
-        document.getElementById("sideNav").style.width = "0";
-      }
-    </script>
+	      .menu-icon{
+	        font-size: 60px; /* EDIT 1 (changed font-size to 60px from 20px) */
+	        cursor: pointer;
+	        color: white;
+	        z-index: 700;
+	        position: absolute; /*EDIT (I took out the top property)*/
+					right: 20px;
+					text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.28);
+	      }
+	    </style>
 
-    <!-- Push Action for Navbar -->
-    <!-- <script>
-      function openNav() {
-        document.getElementById("sideNav").style.width = "300px";
-        document.getElementById("fullpage").style.marginRight = "300px";
-        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-      }
-      
-      function closeNav() {
-        document.getElementById("sideNav").style.width = "0";
-        document.getElementById("fullpage").style.marginRight= "0";
-        document.body.style.backgroundColor = "white";
-      }
-    </script> -->
+	   	<div id="sideNav" class="sideNav">
+	      <ul id="menu">
+	        <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
+	        <li data-menuanchor="aboutUs"><a href="#aboutUs">About Us</a></li>
+	        <li data-menuanchor="end2end"><a href="#end2end">End to End Event Solutions</a></li>
+	        <li data-menuanchor="work"><a href="#work">Our Work</a></li>
+	        <li data-menuanchor="sands"><a href="#sands">Segments &amp; Services</a></li>
+	        <li data-menuanchor="gallery"><a href="#gallery">Gallery</a></li>
+	        <li data-menuanchor="contactUs"><a href="#contactUs">Contact Us</a></li>
+	      </ul>
+	    </div>
+	    <span class="menu-icon" onclick="openNav()">&#9776;</span>
 
-    <!-- Full Page Wrapper -->
+	    <!-- Regular Action for Navbar -->
+	    <script>
+	      function openNav() {
+	        document.getElementById("sideNav").style.width = "300px";
+	      }
+
+	      function closeNav() {
+	        document.getElementById("sideNav").style.width = "0";
+	      }
+	    </script>
+    	<!-- Full Page Wrapper -->
 		<div class="main" id="fullpage">
-			  
-      <!-- First Page -->
+
+      	<!-- First Page -->
 			<section id="first" class="section parallax section-intro">
 				<div class="section__content">
 					<div id="particles-js" class="intro-particles"></div>
-					<div class="intro-logo" style="position: fixed;"></div>
+					<div class="intro-logo"></div>
 				</div>
 			</section>
-	<!-- 
-			<section class="section section--animatable-content section--about">
-				<div class="section__content">
-					<div class="section__partition partition partition--right">
-						<div class="partition__content">
-							<img src="../static/main/images/about_1.jpg" alt="About Us">
-						</div>
-					</div>
-				</div>
-			</section>
+			<style>
+				/*EDIT (This is more CSS for the slider images)*/
+				.slider{
+					position: relative;
+				}
+				.slider img{
+					position: absolute;
+					display: block;
+					/* max-width: 1175px;
+					max-height: 1175px; */
+					width: 100%;
+					height: 100%;
+					left: 0px;
+					top: 0px;
+					bottom: 0px;
+					object-fit: cover;
+				}
+				.top {
+					animation-name: fade;
+					animation-timing-function: ease-in-out;
+					animation-iteration-count: infinite;
+					animation-duration: 18s;
 
-			<section class="section section--animatable-content section--e2e">
-				<div class="section__content">
-					<div class="section__partition partition partition--right">
-						<div class="partition__content">
-							<img src="../static/main/images/end_1.jpg" alt="End 2 End Services">
-						</div>
-					</div>
-				</div>
-			</section>
+				}
+				@keyframes fade {
+					0% {
+				    	opacity:1;
+				  	}
+					27% {
+				    	opacity:1;
+				  	}
+				  	33% {
+				    	opacity:0;
+				 	}
+				  	94% {
+				    	opacity:0;
+				  	}
+				  	100% {
+				    	opacity:1;
+				  	}
+				}
 
-			<section class="section section--animatable-content section--work">
-				<div class="section__content">
-					<div class="section__partition partition partition--right">
-						<div class="partition__content">
-							<img src="../static/main/images/our_work.jpg" alt="Our Work">
-						</div>
-					</div>
-				</div>
-      </section> -->
-      
-
-      <!-- About Us -->			
-			<section class="section middle" id="middle" style="z-index: 100;">
+				.slider img:nth-of-type(1) {
+					animation-delay: 12s;
+				}
+				.slider img:nth-of-type(2) {
+					animation-delay: 5s;
+				}
+				.slider img:nth-of-type(3) {
+					animation-delay: 0s;
+				}
+			</style>
+      	<!-- About Us -->
+			<section class="section middle" id="middle">
 				<div  id="about" class="row-non">
-					<div id="aboutcol" class="column" style="background-image:url('../static/main/images/bgg1.png');overflow: hidden;cursor:default">
-						<h2 id="abouttitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh">About Us</h2>
-						<p id="about-para" class="animated animatedFadeInUp" style="text-align: justify; padding-top: 20px;" >BluStrings is a creation 
-							of the 21st Century, bringing in experience from different fields of science, communication and
-							marketing; we offer a very niche end-product to our clients. We integrate our experiences in event planning and
-							management that translates into our deliverables. <br> <br>
-							Having been in the industry and sharing 18+ man-years of experience, we believe in our commitment to guarantee and deliver a successful event with seamless execution; providing a mix of
-							professional services and creativity. We have created, managed & executed a plethora of events across the board. <br> <br>
-							With a dedicated team that covers all avenues in building your project right from the ground up, we conceptualize and develop
-							on comprehensive plans and ideas that suit your budget. Our team is with you at every step of the way.
+					<div id="aboutcol" class="column" style="overflow: hidden;">
+					  <!--	<br> EDIT 2(Added a <br>)-->
+						<h2 id="abouttitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh font-weight: 900">About Us</h2>
+						<p id="about-para" class="animated animatedFadeInUp" style="font-size: 20px; padding-top: 20px; font-weight: 600" ><!-- EDIT 3(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and also changed the content!!)-->BluStrings is a creation of the 21st Century, bringing in experience from different fields of science, communication and marketing; we offer a very niche end-product to our clients.
+						<br> <br>
+						Having been in the industry and sharing 18+ man-years of experience, we believe in our commitment to guarantee and deliver a successful event with seamless execution; providing a mix of professional services and creativity. We have created, managed & executed a plethora of events across the board.
+						<br> <br>
+						With a dedicated team that covers all avenues in building your project right from the ground up, we conceptualize and develop on comprehensive plans and ideas that suit your budget. Our team is with you at every step of the way.
 						</p>
 					</div>
-					<div id="aboutimg" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/about_1.jpg');background-size:cover;">
-					</div>
+					<!--EDIT (slider image slideshow)-->
+					<div id="aboutimg" class="column animated animatedFadeInUp slider">
+        				<img class="bottom" src="../static/main/images/about_2.png">
+        				<img class="top" src="../static/main/images/about_1.jpg">
+        				<img class="top" src="../static/main/images/about_3.jpg">
+      				</div>
 				</div>
 			</section>
 
 
-      <!-- End-to-End -->
+     	<!-- End-to-End -->
 			<section class="section middle1">
 				<div  id="e2e" class="row-non">
-					<div id="e2ecol" class="column" style="background-image:url('../static/main/images/bgg2.png');overflow: hidden;cursor:default">
-						<h2 id="e2etitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh" >End to End Event Solutions</h2>
-						<p id="e2e-para" class="animated animatedFadeInUp" style="text-align:justify; padding-top: 20px;">BluStrings understands the 
-							importance of celebrating an occasion. As the years pass, Social events, Cultural Shows,
-							Music Festivals, Concept Events & Club Shows have only grown in number. At BluStrings we create and cater the perfect
-							package with all-inclusive services from finalization of the venue to the complete production and execution of the show.
-							Our team comprises of visionaries that are driven to inspire, create and add value to every project we take on with our
-							clients. We believe in cost-effective performances, accountability and maintain timelines to deliver an excellent
-							product as promised.
+					<div id="e2ecol" class="column" style="overflow: hidden;">
+						 <!-- <br> EDIT 4 (Added a <br>)-->
+						<h2 id="e2etitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh; line-height: 150%; font-weight: 900" >End to End <br> Event Solutions</h2>
+						<!-- EDIT 5(added a <br> to the title(<h2>))-->
+						<p id="e2e-para" class="animated animatedFadeInUp" style="font-size:20px; padding-top: 20px; font-weight: 600"><!-- EDIT 6(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->BluStrings understands the importance of celebrating an occasion. As the years pass, Social events, Cultural Shows, Music Festivals, Concept Events & Club Shows have only grown in number. At BluStrings we create and cater the perfect package with all-inclusive services from finalization of the venue to the complete production and execution of the show.
+						<br><br>
+						Our team comprises of visionaries that are driven to inspire, create and add value to every project we take on with our clients. We believe in cost-effective performances, accountability and maintain timelines to deliver an excellent product as promised.
 						</p>
 					</div>
-					<div id="e2e1img" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/end_1.jpg');background-size:cover;">
-					</div>
+					<!--EDIT (slider image slideshow)-->
+					<div id="e2e1img" class="column animated animatedFadeInUp slider">
+        				<img class="bottom" src="../static/main/images/end_2.jpg">
+        				<img class="top" src="../static/main/images/end_1.jpg">
+        				<img class="top" src="../static/main/images/end_3.jpg">
+      				</div>
 				</div>
-      </section>
-      
+      		</section>
 
-      <!-- Our Work -->
+
+      	<!-- Our Work -->
 			<section class="section middle2" >
 				<div  id="our_work" class="row-non">
-					<div id="our_workcol" class="column" style="background-image:url('../static/main/images/bgg3.png');overflow: hidden;cursor:default">
-						<h2 id="ourtitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh">Our Work</h2>
-						<p id="our-para" class="animated animatedFadeInUp" style="text-align: justify; padding-top: 20px;">Our Exhibit showcases 
-							events across the various segments we have encountered. Each event came with its own sets of
-							challenges and risk factors. BluStrings believes in the mantra of Creation, Cultivation and Curation through which we
-							have been able to overcome any set of challenges resulting in these events that were impeccable and glamorous to the
-							audience. BluStrings lays utmost importance on Quality, Inventiveness & Perfection to ensure that your event/show runs
-							as crafted, whether it’s for a glamorous appeal or a night for everyone to remember.
+					<div id="our_workcol" class="column" style="overflow: hidden;">
+						<h2 id="ourtitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh; font-weight: 900">Our Work</h2>
+						<p id="our-para" class="animated animatedFadeInUp" style="font-size: 20px; padding-top: 20px; font-weight: 600"><!-- EDIT 8(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->
+							Our Exhibit showcases events across the various segments we have encountered. Each event came with its own sets of challenges and risk factors. BluStrings believes in the mantra of Creation, Cultivation and Curation through which we have been able to overcome any set of challenges resulting in these events that were impeccable and glamorous to the audience.
+							<br><br>
+							BluStrings lays utmost importance on Quality, Inventiveness & Perfection to ensure that your event/show runs as crafted, whether it’s for a glamorous appeal or a night for everyone to remember.
 						</p>
 					</div>
-					<div id="our_img" class="column animated animatedFadeInUp" style="background-image:url('../static/main/images/our_work.jpg');background-size:cover;">
-					</div>
+					<!--EDIT (slider image slideshow)-->
+					<div id="our_img" class="column animated animatedFadeInUp slider">
+        				<img class="bottom" src="../static/main/images/our_work1.jpg">
+        				<img class="top" src="../static/main/images/our_work2.jpg">
+        				<img class="top" src="../static/main/images/our_work3.jpg">
+      				</div>
 				</div>
-      </section>
-      
+      		</section>
+
 			<style>
 				* {box-sizing: border-box}
 
-				
+
 				/* Style tab links */
 				.tablink {
-				  background-color: #555;
-				  color: black;
+					background-color: #555;
+					color: #fff;
 				  float: left;
 				  border: none;
 				  outline: none;
 				  cursor: pointer;
 				  padding: 5vh 6vh;
-				  font-size: 17px;
+				  font-size: 25px;
 				  width: 50%;
 				  font-family: 'Raleway';
 				  font-weight: 700;
 				}
-				
-				.tablink:hover {
-				  background-color: #777;
+
+				.tablink.tabactive {
+					background: transparent;
+					color: #404040;
 				}
-				
+
+				.tablink:hover, .tablink:active {
+					background: #777;
+				}
+
+				.tablink.tabactive:hover, .tablink.tabactive:active {
+					background: transparent;
+				}
+
 				/* Style the tab content (and add height:100% for full page content) */
 				.tabcontent {
 				  color: black;
 				  display: none;
-				  padding: 3vh 5vh;
+				  padding: 5em 0 1em;
 				  height: 100vh;
 				}
-				
-				#Home {background-image: url('../static/main/images/bg8.png');}
-				#News {background-image: url('../static/main/images/bg9.png');}
-      </style>
-      
 
-      <!-- Segments & Servies -->
+				@media (max-width: 768px) {
+					.tablink {
+						background-color: transparent;
+						color: #404040;
+						width: auto;
+						padding: 0.45em 1em;
+						font-size: 20px;
+						margin: 1.3em 0 1em;
+						border-radius: 12px;
+					}
+
+					.tablink:nth-child(1) {
+						margin-left: 1em;
+					}
+
+					.tablink:nth-child(1).tabactive {
+						background: #bce6aa;
+						color: #376325;
+					}
+
+					.tablink:nth-child(2).tabactive {
+						background: #f3dbb8;
+						color: #905600;
+					}
+
+					.tablink:hover, .tablink:active {
+						background: transparent;
+					}
+				}
+
+				@media (max-width: 320px) {
+					.tablink {
+						background-color: transparent;
+						color: #404040;
+						width: auto;
+						padding: 0.45em 1em;
+						font-size: 15px;
+						margin: 1.9em 0 1em;
+						border-radius: 12px;
+					}
+					.tablink:nth-child(1) {
+						margin-left: 1em;
+					}
+
+					.tablink:nth-child(1).tabactive {
+						background: #bce6aa;
+						color: #376325;
+					}
+
+					.tablink:nth-child(2).tabactive {
+						background: #f3dbb8;
+						color: #905600;
+					}
+
+					.tablink:hover, .tablink:active {
+						background: transparent;
+					}
+				}	
+				#Segments {background-image: url('../static/main/images/bg8.png');}
+				#News {background-image: url('../static/main/images/bg9.png');}
+      		</style>
+
+
+      		<!-- Segments & Servies -->
+      		<!-- EDIT 10 (changed the complete order of the icons and the titles and the icons itself, check the icon folder in the images folder and copy the new icons) -->
 			<section class="section" id="last">
 				<div id="part3" style="width: 100%;">
-					<button class="tablink" onclick="openPage('Home', this)"  id="defaultOpen">SEGMENTS</button>
+					<button class="tablink" onclick="openPage('Segments', this)"  id="defaultOpen">SEGMENTS</button>
 					<button class="tablink" onclick="openPage('News', this)">SERVICES</button>
-					<div id="Home" class="tabcontent">	
-						<div class="grid-container">
+					<div id="Segments" class="tabcontent">
+						<div class="grid-container1"><!-- EDIT 11 (added a new class = "grid-container1", only for the segments section-->
 							<div  class="grid-item">
 								<div id="seg1" class="service">
 									<img src="../static/main/images/icon/conferences.png" class="service-image">
@@ -391,20 +528,20 @@
 							</div>
 							<div class="grid-item">
 								<div id="seg2" class="service">
-									<img src="../static/main/images/icon/corporate.png" class="service-image">
-									<h4 class="service-description browser-default">CORPORATE EVENTS</h4>
+									<img src="../static/main/images/icon/association.png" class="service-image">
+									<h4 class="service-description browser-default">ASSOCIATIONS</h4>
 								</div>
 							</div>
 							<div class="grid-item">
 								<div id="seg3" class="service">
-										<img src="../static/main/images/icon/social_events.png" class="service-image">
-										<h4 class="service-description browser-default">SOCIAL EVENTS</h4>
+										<img src="../static/main/images/icon/corporate.png" class="service-image">
+										<h4 class="service-description browser-default">CORPORATE EVENTS</h4>
 								</div>
-							</div>  
+							</div>
 							<div class="grid-item">
 								<div id="seg4" class="service">
-										<img src="../static/main/images/icon/end_to_end_av_solutions.png" class="service-image">
-										<h4 class="service-description browser-default">END TO END EVENT SOLUTIONS</h4>
+										<img src="../static/main/images/icon/exhibition.png" class="service-image">
+										<h4 class="service-description browser-default">TRADE SHOWS &amp; EXHIBITIONS</h4>
 								</div>
 							</div>
 							<div class="grid-item">
@@ -418,47 +555,110 @@
 									<img src="../static/main/images/icon/cultural_shows.png" class="service-image">
 									<h4 class="service-description browser-default">CULTURAL SHOWS</h4>
 								</div>
-							</div>  
+							</div>
 							<div class="grid-item">
 								<div id="seg7" class="service">
-									<img src="../static/main/images/icon/branding.png" class="service-image">
-									<h4 class="service-description browser-default">TRADE SHOWS &amp; EXHIBITIONS</h4>
+									<img src="../static/main/images/icon/socials.png" class="service-image">
+									<h4 class="service-description browser-default">SOCIAL EVENTS</h4>
 								</div>
-							</div> 
+							</div>
+							<div class="grid-item">
+								<div id="seg8" class="service">
+									<!-- EDIT 12 (added inline css(<img> and <h4>) for this grid item)-->
+									<img src="../static/main/images/icon/end_to_end_av_solutions.png" class="service-image">
+									<h4 class="service-description browser-default">END-END EVENT SOLUTIONS</h4>
+								</div>
+							</div>
 						</div>
 					</div>
-				
+
 					<div id="News" class="tabcontent">
 						<style>
+							.grid-container1{
+								display: grid;
+								grid-template-columns: repeat(4, 1fr);
+								padding: 32px;
+								width: 100%;
+								grid-gap: 12px;
+								grid-template-rows: 250px 200px;
+							}
 							.grid-container {
-							  display: grid;
-							  grid-template-columns: 25% 25% 25% 25%;
-							  background-color: transparent;
-							  padding: 10px;
-							  margin-top:8%;
+							  	display: grid;
+								grid-template-columns: repeat(4, 1fr);
+								padding: 32px;
+								width: 100%;
+								grid-gap: 12px;
 							}
 							.grid-item {
-							  background-color: transparent;
-							  border: 0px solid rgba(0, 0, 0, 0.8);
-							  padding: 20px;
-							  height: 25vh;
-							  font-size: 10px;
-							  text-align: center;
-							  justify-content: center;
-							  justify-items: center;
+								padding: 12px;
+								display: flex;
+								text-align: center;
+								justify-content: center;
+								align-items: center;
 							}
 							.service-image{
-								height: 80px;
-								width:80px;
-								margin-left: 35%;
+								height: 100%;
+								width: 100%;
+								max-width: 80px;
+								max-height: 80px;
+								object-fit: contain;
 							}
 							.service{
 								text-align: center;
-              }
-              
-              h4 {
-                font-size: 1.4rem !important;
-              }
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								align-items: center;
+							}
+
+							@media (max-width: 768px) {
+								.grid-container1{
+									grid-template-columns: 33.3% 33.3% 33.3%;
+									grid-template-rows: auto 200px;
+									padding: 12px;
+									grid-gap: 0;
+								}
+								.grid-container {
+									grid-template-columns: 33.3% 33.3% 33.3%;
+									grid-template-rows: auto;
+									padding: 12px;
+									grid-gap: 0;
+								}
+								.grid-item {
+									padding: 12px 16px;
+								}
+								.service-image{
+									height: 100%;
+									width: 100%;
+									max-width: 50px;
+									max-height: 50px;
+									object-fit: contain;
+								}
+							}
+							@media (max-width: 320px) {
+								.grid-container1{
+									grid-template-columns: 33.3% 33.3% 33.3%;
+									grid-template-rows: auto 200px;
+									padding: 1px;
+									grid-gap: 5;
+								}
+								.grid-container {
+									grid-template-columns: 33.3% 33.3% 33.3%;
+									grid-template-rows: auto;
+									padding: 1px;
+									grid-gap: 0;
+								}
+								.grid-item {
+									padding: 12px 16px;
+								}
+								.service-image{
+									height: 100%;
+									width: 100%;
+									max-width: 50px;
+									max-height: 50px;
+									object-fit: contain;
+								}
+							}
 						</style>
 						<div class="grid-container">
 						  	<div class="grid-item">
@@ -469,7 +669,7 @@
 						  	</div>
 						  	<div class="grid-item">
 						  		<div id="ser2" class="service">
-									<img src="../static/main/images/icon/lights.png" class="service-image">
+									<img src="../static/main/images/icon/lighting.png" class="service-image">
 									<h4 class="service-description browser-default">LIGHTS</h4>
 								</div>
 							</div>
@@ -481,8 +681,8 @@
 							</div>
 							<div class="grid-item">
 								<div id="ser4" class="service">
-									<img src="../static/main/images/icon/registration.png" class="service-image">
-									<h4 class="service-description browser-default">REGISTRATION MANAGEMENT</h4>
+									<img src="../static/main/images/icon/digital_systems.png" class="service-image">
+									<h4 class="service-description browser-default">DIGITAL SYSTEMS</h4>
 								</div>
 							</div>
 							<div class="grid-item">
@@ -493,339 +693,414 @@
 							</div>
 							<div class="grid-item">
 								<div id="ser6" class="service">
-									<img src="../static/main/images/icon/digital_systems.png" class="service-image">
-									<h4 class="service-description browser-default">DIGITAL SYSTEMS</h4>
-								</div>
-							</div>
-							<div class="grid-item">
-								<div id="ser7" class="service">
 									<img src="../static/main/images/icon/staging_styling.png" class="service-image">
 									<h4 class="service-description browser-default">STAGING &amp; STYLING</h4>
 								</div>
 							</div>
 							<div class="grid-item">
-								<div id="ser8" class="service">
+								<div id="ser7" class="service">
 									<img src="../static/main/images/icon/branding.png" class="service-image">
 									<h4 class="service-description browser-default">BRANDING</h4>
 								</div>
 							</div>
 							<div class="grid-item">
-								<div id="ser9" class="service">
+								<div id="ser8" class="service">
 									<img src="../static/main/images/icon/artist_management.png" class="service-image">
 									<h4 class="service-description browser-default">ARTIST MANAGEMENT</h4>
 								</div>
 							</div>
 							<div class="grid-item">
-								<div id="ser10" class="service">
+								<div id="ser9" class="service">
 									<img src="../static/main/images/icon/manpower.png" class="service-image">
 									<h4 class="service-description browser-default">MANPOWER MANAGEMENT</h4>
 								</div>
-							</div>  
+							</div>
+							<div class="grid-item">
+								<div id="ser10" class="service">
+									<img src="../static/main/images/icon/registration.png" class="service-image">
+									<h4 class="service-description browser-default">REGISTRATION MANAGEMENT</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser11" class="service">
+									<!-- EDIT 13 (added inline css(<img> and <h4>) for this grid item)-->
+									<img src="../static/main/images/icon/graphic-designing.png" class="service-image">
+									<h4 class="service-description browser-default">GRAPHIC DESIGNING</h4>
+								</div>
+							</div>
+							<div class="grid-item">
+								<div id="ser12" class="service">
+									<img src="../static/main/images/icon/website-management.png" class="service-image">
+									<h4 class="service-description browser-default">WEBSITE MANAGEMENT</h4>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-      
 
-      <!-- Gallery -->
-      <style>
-        #hero-slider:not(.loaded) .slide:not(:first-child) {
-          visibility: visible;
-        }
-      </style> 
+
+      		<!-- Gallery -->
+      		<style>
+        		#hero-slider:not(.loaded) .slide:not(:first-child) {
+          		visibility: visible;
+        		}
+      		</style>
 			<section class="section">
 				<div id="hero-slider">
-          <div id="slideshow">
-              <div id="slides-main" class="slides">
-                  <div class="slide" data-index="0">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="1">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="2">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="3">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="4">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="5">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="6">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="7">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
-                      </div>
-                  </div>
-                  <div class="slide" data-index="8">
-                      <div class="abs-mask">
-                          <div class="slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
-                      </div>
-                  </div>
-              </div>
-              <div id="slides-aux" class="slides mask">
-                  <h2 class="slide-title slide" data-index="0"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="1"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="2"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="3"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="4"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="5"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="6"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="7"><a href="#"></a></h2>
-                  <h2 class="slide-title slide" data-index="8"><a href="#"></a></h2>
-              </div>
-          </div>
-          <div id="info">
-              <div class="slider-title-wrapper">
-                  <span class="line"></span>
-                  <h1 class="slider-title">
-                      <span>GALLERY</span>
-                  </h1>
-              </div>
-          </div>
-          <nav id="slider-nav" class="browser-default">
-              <span class="current">01</span>
-              <span class="sep"></span>
-              <span class="total">09</span>
-          </nav>
-        </div>
-    	
-      </section>
-      
+					<div id="slideshow">
+						<div id="slides-main" class="slides">
+							<div class="slide" data-index="0">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="1">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="2">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="3">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="4">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="5">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="6">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="7">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
+								</div>
+							</div>
+							<div class="slide" data-index="8">
+								<div class="abs-mask">
+									<div class="slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
+								</div>
+							</div>
+						</div>
+						<div id="slides-aux" class="slides mask">
+							<h2 class="slide-title slide" data-index="0"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="1"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="2"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="3"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="4"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="5"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="6"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="7"><a href="#"></a></h2>
+							<h2 class="slide-title slide" data-index="8"><a href="#"></a></h2>
+						</div>
+					</div>
+					<div id="info">
+						<div class="slider-title-wrapper">
+							<span class="line"></span>
+							<h1 class="slider-title">
+								<span>GALLERY</span>
+							</h1>
+						</div>
+						<!--
 
-      <!-- Contact US -->
+							Dec 4 - Edit Ram
+							Forward and Backward controls for gallery
+							Autoplay disabled
+
+						 -->
+						 <style>
+							 #info .about {
+									right: 1rem;
+									left: 1rem;
+									display: flex;
+									justify-content: center;
+									
+							}
+								/* Dec 4 - Ram - styling for controls */
+								.controls-left , .controls-right{
+									position: relative;
+									font-size:1.8rem;
+									font-weight: bolder;
+									color: black;
+									padding: 10px;
+
+								}
+
+								.controls-left:hover,.controls-right:hover{
+									color: white;
+								}
+
+								@media only screen and (max-width: 920px) {
+									#info {
+										display: flex;
+										position: absolute;
+										width: 100%;
+										height: 100vh;
+										z-index: 500;
+										background: transparent;
+										justify-content: center;
+									}
+
+									#info .slider-title-wrapper {
+										display: none;
+									}
+
+									#info .about {
+										left: initial;
+										right: initial;
+										background: rgba(255,255,255,0.5);
+										padding: 0px 12px;
+										border-radius: 36px;
+										display: flex;
+										align-items: center;
+										justify-content: space-around;
+									}
+
+									#slider-nav {
+										top: 6rem;
+										right: auto;
+										left: 2rem;
+									}
+								}
+							</style>
+
+						<div class="about">
+							<br> <br>
+							<a class="controls-left" href="#" id="backward"><</a>
+							<a id="pause-b" href="#" class="controls-left">  &#x2759;&#x2759; </a>
+							<a id="play-b" href="#" class="controls-left"> &#x25B6; </a>
+							<a class="controls-right" href="#" id="forward">></a>
+						</div>
+						<!-- Edit ends here -->
+					</div>
+
+					<nav id="slider-nav" class="browser-default">
+						<span class="current">01</span>
+						<span class="sep"></span>
+						<span class="total">09</span>
+					</nav>
+				</div>
+      		</section>
+
+      		<!-- Contact US -->
 			<section class="section">
 				<div class="row cont">
-          <div class="map-container">
-            <iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-            </iframe>
-            <a href="https://www.enable-javascript.net"></a>
-          </div>
+					<div class="map-container">
+						<iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0"> <!-- EDIT 14 , changed "scrolling" to "yes"-->
+						</iframe>
+						<a href="https://www.enable-javascript.net"></a>
+					</div>
 
-          <div class="contact-container">
-            <div class="row contact-head">
-              <h1 style="border-bottom: 5px solid #000;padding-bottom:1vh; width: 100%;">Contact Us</h1>
-            </div>
-            <div class="row contact-form z-depth-2">
-              <form action="" class="col s12" id="contact">
-                <div class="row">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="icon_name" type="text" name="name" id="name" class="validate" required>
-                    <label for="icon_name">Name</label>
-                  </div>
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">work</i>
-                    <input id="icon_company" type="tel" class="validate" name="company">
-                    <label for="icon_company">Company</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">email</i>
-                    <input id="icon_email" type="text" class="validate" name="email" required>
-                    <label for="icon_email">Email</label>
-                    
-                  </div>
-                  <div class="input-field col s6">
-                    <i class="material-icons prefix">phone</i>
-                    <input id="icon_telephone" type="tel" class="validate" name="phone" required>
-                    <label for="icon_telephone">Phone Number</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12">
-                    <button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
-                    </button>
-                  </div>
-                </div>
-                <div id="alerts" class="row hidden">
-                  <div class="alert col s12">
-                    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                    <span id="error-message"></span>
-                  </div>
-                </div>
-              </form>
-            </div>
+					<div class="contact-container">
+						<div class="row contact-head">
+							<h1 style="border-bottom: 5px solid #000;padding-bottom:1vh; width: 100%;">Contact Us</h1>
+						</div>
+						<div class="row contact-form z-depth-2">
+							<form action="" class="col s12" id="contact">
+								<div class="row">
+									<div class="input-field col s6">
+										<i class="material-icons prefix">account_circle</i>
+										<input id="icon_name" type="text" name="name" id="name" class="validate" required>
+										<label for="icon_name">Name</label>
+									</div>
+									<div class="input-field col s6">
+										<i class="material-icons prefix">work</i>
+										<input id="icon_company" type="tel" class="validate" name="company">
+										<label for="icon_company">Company</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s6">
+										<i class="material-icons prefix">email</i>
+										<input id="icon_email" type="text" class="validate" name="email" required>
+										<label for="icon_email">Email</label>
+									</div>
+									<div class="input-field col s6">
+										<i class="material-icons prefix">phone</i>
+										<input id="icon_telephone" type="tel" class="validate" name="phone" required>
+										<label id="phonee" for="icon_telephone">Number</label>
+									</div>
+								</div>
+								<div class="row">
+									<div class="input-field col s12">
+										<button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
+										</button>
+									</div>
+								</div>
+								<div id="alerts" class="row hidden">
+									<div class="alert col s12">
+										<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+										<span id="error-message"></span>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="row contact-info">
+							<div class="row">
+								<i class="material-icons prefix cen" id="icon_location">location_on</i>
+								<span class="bluInfo"><a href="https://maps.google.com/?cid=5926484427503604138" target="_blank">Blustrings Entertainment Solutions Pvt. Ltd. Nava Jyothi Apartments, #6-3-661, 4/A, Sangeet Nagar, Somajiguda, Hyderabad, Telangana 500082</a></span>
+							</div>
+							<div class="row">
+								<i class="material-icons prefix ten" id="icon_telephone_blu">phone</i>
+								<span class="bluInfo">+91 7893274386</span>
+							</div>
+							<div class="row">
+								<i class="material-icons prefix ten" id="icon_email_blu">email</i>
+								<span class="bluInfo">hello@blustrings.com</span>
+							</div>
+            			</div>
+			            <script>
 
-            <div class="row contact-info">
-              <div class="row">
-                <i class="material-icons prefix cen" id="icon_location">location_on</i>
-                <span class="bluInfo">#6-3-661/4/A, 1st Floor Navajyothi Apts, <br>Sangeet Nagar, Somajiguda, Hyderabad (T.S) - 500082</span>              
-              </div>
-              <div class="row">
-                <i class="material-icons prefix ten" id="icon_telephone_blu">phone</i>
-                <span class="bluInfo">+91 7893274386</span>
-              </div>
-              <div class="row">
-                <i class="material-icons prefix ten" id="icon_email_blu">email</i>
-                <span class="bluInfo">hello@blustrings.com</span>
-              </div>
-            </div>
+			              var csrftoken = Cookies.get('csrftoken');
 
-            <script>
+			              function csrfSafeMethod(method) {
+			                // these HTTP methods do not require CSRF protection
+			                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+			              }
 
-              var csrftoken = Cookies.get('csrftoken');
-
-              function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-              }
-            
-              $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                  }
-                }
-              });
+			              $.ajaxSetup({
+			                beforeSend: function(xhr, settings) {
+			                  if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+			                      xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			                  }
+			                }
+			              });
 
 
-              $('#contact').on('submit',function(e){
-                e.preventDefault();
-                var name = $('#icon_name').val();
-                var company = $('#icon_company').val();
-                var email = $('#icon_email').val();
-                var phone = $('#icon_telephone').val();
-                //var message = $('#message').val();
+			              $('#contact').on('submit',function(e){
+			                e.preventDefault();
+			                var name = $('#icon_name').val();
+			                var company = $('#icon_company').val();
+			                var email = $('#icon_email').val();
+			                var phone = $('#icon_telephone').val();
+			                //var message = $('#message').val();
 
-                $.ajax({
-                  type: "post",
-                  url: 'test/',
-                  datatype:'jsonp',
-                  data: {
-                  'name': name,
-                  'company': company,
-                  'email': email,
-                  'phone': phone,
-                  //'message': message,
-                  },
-                }).done(function(response) {
-                  console.log(response);
-                  $('#alerts').show();
-                  $('#error-message').text(response.err_msg);
-                })
-              
-              });
+			                $.ajax({
+			                  type: "post",
+			                  url: 'test/',
+			                  datatype:'jsonp',
+			                  data: {
+			                  'name': name,
+			                  'company': company,
+			                  'email': email,
+			                  'phone': phone,
+			                  //'message': message,
+			                  },
+			                }).done(function(response) {
+			                  console.log(response);
+			                  $('#alerts').show();
+			                  $('#error-message').text(response.err_msg);
+			                })
 
-            </script>
-          </div>
-          
-        </div>
-      </section>
-      
+			              });
 
-      <section class="section fp-auto-height">
-        <div class="row">
-          <div class="footer-content col s10">
-            <h5 style="font-family: 'Source Sans Pro', sans-serif; font-size: 14px;">Blustrings Entertainment | Create. Curate. Cultivate.</h5> 
-            <p>Copyright © 2019 BluStrings Entertainment Solutions Pvt. Ltd.</p>
-          </div>
-          <div class="social-media col s2">
-            <div class="row-non" style="height: auto;">
-              <div class="colm">
-                <img src="../static/main/images/facebook.png" style="width:100%">
-              </div>
-              <div class="colm">
-                <a href="https://www.instagram.com/blustringsofficial" target="_blank"><img src="../static/main/images/instagram.png" style="width:100%"></a>                
-              </div>
-              <div class="colm">
-                <img src="../static/main/images/Linkedin.png" style="width:100%">                
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <style>
-        .colm {
-          float: left;
-          width: 33.33%;
-          padding: 5px;
-        }
-        .footer-content{
-          color: white !important;
-        }
-        .social-media{
-          display: block;
-          /*position: absolute;
-          left: 1100px;
-          top: 20px;*/
-        }
-      </style>
-
-
+			            </script>
+         			</div>
+          		</div>
+      		</section>
+			<section class="section fp-auto-height">
+				<div class="row">
+				  <div class="footer-content col s10">
+				    <h5 style="font-family: 'Source Sans Pro', sans-serif; font-size: 14px;">Blustrings Entertainment | Create. Curate. Cultivate.</h5>
+				    <p>Copyright © 2019 BluStrings Entertainment Solutions Pvt. Ltd.</p>
+				  </div>
+				  <div class="social-media col s2">
+				    <div class="row-non" style="height: auto;">
+				      <div class="colm">
+				      	<a href="https://www.facebook.com/blustrings/" target="_blank"><img src="../static/main/images/facebook.png" style="width:60%; padding-top: 30px"></a>
+				      </div>
+				      <div class="colm">
+				        <a href="https://www.instagram.com/blustringsofficial" target="_blank"><img src="../static/main/images/instagram.png" style="width:60%; padding-top: 30px"></a>
+				      </div>
+				      <div class="colm">
+				      	<a href="https://in.linkedin.com/company/blustrings" target="_blank"><img src="../static/main/images/Linkedin.png" style="width:60%; padding-top: 30px"></a>
+				      	<!-- EDIT 15 (added facebook and linkedin links)-->
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</section>
+			<style>
+				.colm {
+				  float: left;
+				  width: 20%;
+				}
+				.footer-content{
+				  color: white !important;
+				}
+				.social-media{
+				  display: block;
+				}
+			</style>
 			<script>
 				function openPage(pageName,elmnt) {
 				  var i, tabcontent, tablinks;
 				  tabcontent = document.getElementsByClassName("tabcontent");
 				  for (i = 0; i < tabcontent.length; i++) {
-					tabcontent[i].style.display = "none";
+						tabcontent[i].style.display = "none";
 				  }
 				  tablinks = document.getElementsByClassName("tablink");
 				  for (i = 0; i < tablinks.length; i++) {
-					tablinks[i].style.backgroundColor = "#777";
-					tablinks[i].style.color = "#fff";
-				  }
+						tablinks[i].classList.remove('tabactive');
+						// tablinks[i].style.backgroundColor = "#777";
+						// tablinks[i].style.color = "#fff";
+					}
+
 				  document.getElementById(pageName).style.display = "block";
-				  elmnt.style.backgroundColor = "transparent";
-				  elmnt.style.color = "#000";
+				  // elmnt.style.backgroundColor = "transparent";
+				  // elmnt.style.color = "#000";
+				  elmnt.classList.add('tabactive');
 
 
 				  $('.service').fadeOut(10);
-				  if(pageName == 'Home'){
+				  if(pageName == 'Segments'){
 
-					  for(var i=0;i<7;i++){
-							
+					  for(var i=0;i<8;i++){  // EDIT 16 changed i<7 to i<8
+
 						$('#seg'+(i+1)).delay(i*200).fadeIn(300);
-						
+
 					  }
 				  }else{
-					for(var i=0;i<10;i++){
-							
+					for(var i=0;i<12;i++){  // EDIT 17 changed i<11 to i<12
+
 							$('#ser'+(i+1)).delay(i*200).fadeIn(300);
-							
+
 						  }
 				  }
 
 				}
-				
+
 				// Get the element with id="defaultOpen" and click on it
 				document.getElementById("defaultOpen").click();
 			</script>
-    </div>
-    
+    	</div>
+
 		<script type="text/javascript" src="{% static 'main/js/gallery.js' %}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.js"></script>
+    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.js"></script>
 		<script type="text/javascript" src="{% static 'main/js/particles.js' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/lottie.js' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/preloader.json' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/logo.json' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/lottie-animations.js' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/app.js' %}"></script>
-    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+    	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
 		<script type="text/javascript" src="{% static 'main/js/fullpage.extensions.min.js' %}"></script>
 		<script type="text/javascript" src="{% static 'main/js/fullpage.js' %}"></script>
-    
+
 		<script>
 			var secs = ['#first','#middle','#last'];
 			var aboutTop = $('#middle').offset().top;
@@ -834,85 +1109,29 @@
 			$(window).ready(function(){
 
 				$('.service').fadeOut();
-				for(var i=0;i<7;i++){
-									
+				for(var i=0;i<8;i++){   //EDIT 18 changed i<7 to i<8
+
 									$('#seg'+(i+1)).fadeOut();
-														
+
 									}
 
 			});
-
-
-			// $(window).bind('mousewheel DOMMouseScroll onmousewheel touchmove scroll', function(event) {
-				
-				
-			// 	var winTop = $(window).scrollTop();
-
-			// 	if(winTop > aboutTop){
-			// 		$('html,body').animate({
-			// 			scrollTop: $('#middle').offset().top
-			// 		},"slow");
-			// 	}
-
-			// 	if(winTop > lastTop){
-					
-			// 	}
-				
-				
-			// });
 			$('#e2e-sec').hide();
 			$('#our-sec').hide();
 			$('.service').fadeOut();
 			var $window = $(window), previousScrollTop = 0, scrollLock = false;
-
-			// var maxSlides = 2;
-			// var currSlide = 0;
-
-			// var slides = ['','#e2e-sec','#our-sec']
-
-			// $window.scroll(function(event) { 
-			// 	var winTop = $(window).scrollTop();
-
-			// 	if (event.originalEvent.wheelDelta >= 0) {
-			// 		console.log('Scroll up');
-			// 		if(currSlide > 0) currSlide-=1;
-					
-					
-			//     }
-			//     else {
-			// 		if(currSlide < maxSlides) currSlide +=1;
-			// 		$(slides[currSlide]).fadeIn(1000);
-			// 		console.log('Scroll down');
-			// 		if (currSlide == 0)
-			// 		{scrollLock = !scrollLock;}
-			//     }
-
-			// 	if(winTop >= aboutTop)
-			// 	scrollLock = true;
-
-
-			// 	// set (bool)scrollLock prior to this to either lock or unlock
-			//     if(scrollLock) {
-			// 		$window.scrollTop(previousScrollTop);
-			//     }
-
-			//     previousScrollTop = $window.scrollTop();
-
-			// });
-
 			var paras = ['about-para','e2e-para','our-para']
 			var images = ['aboutimg','e2e1img','our_img']
 			var titles = ['abouttitle','e2etitle','ourtitle']
 			var currSlides = 0;
-
 			new fullpage("#fullpage",{
-        anchors: ['home', 'aboutUs', 'end2end', 'work', 'sands', 'gallery', 'contactUs', 'footer'],
-        parallax:true,
-        //lockAnchors:true,
-				parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
-        scrollingSpeed:900,
-        controlArrows: false,
-        menu: '#menu',
+        	anchors: ['home', 'aboutUs', 'end2end', 'work', 'sands', 'gallery', 'contactUs', 'footer'],
+        	parallax:true,
+        	//lockAnchors:true,
+			parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
+        	scrollingSpeed:900,
+        	controlArrows: false,
+        	menu: '#menu',
 				afterLoad:function(origin,destination,direction){
 
 						console.log('origin:'+origin.index+'dest:'+destination.index);
@@ -928,8 +1147,8 @@
 							var dc = document.getElementById(titles[x]);
 							dc.classList.remove('fadeInUp');
 						}
-					
-					
+
+
 					if(direction == 'down'){
 						if(destination.index >=1 && destination.index <4){
 						var dc2 = document.getElementById(titles[destination.index-1]);
@@ -945,13 +1164,13 @@
 					setTimeout(function(){
 						dc1.classList.add('fadeInUp');
 					},400);
-					
+
 					}
 					}
 
 
 					if(direction == 'up'){
-						
+
 
 					if(destination.index >=1 && destination.index <4){
 					var dc2 = document.getElementById(titles[destination.index-1]);
@@ -975,31 +1194,27 @@
 						$('.service').fadeOut("fast");
 					}
 					if(destination.index == 4){
-						
-							if(origin.index == 3)
+
+							if(origin.index == 3 || window.location.hash.toLowerCase()=='#sands')
 							{	$('.service').hide();
-							
-							  for(var i=0;i<7;i++){
-									
+
+							  for(var i=0;i<8;i++){  //EDIT 19 changed i<7 to i<8
+
 								$('#seg'+(i+1)).delay(i*200).fadeIn(300);
 
-								
+
 							  }
-							  for(var i=0;i<11;i++){
-									
-	
+							  for(var i=0;i<12;i++){ //EDIT 20 changed i<10 to i<12
+
+
 									$('#ser'+(i+1)).delay(i*200).fadeIn(300);
-									
+
 								  }
 							}
-							  
-						  
 					}
-					
-					
 				},
 				onLeave:function(origin,destination,direction){
-						
+
 					for(var x=0;x<3;x++){
 							var dc = document.getElementById(paras[x]);
 							dc.classList.remove('fadeOutDown');
@@ -1012,8 +1227,8 @@
 							var dc = document.getElementById(titles[x]);
 							dc.classList.remove('fadeOutDown');
 						}
-					
-					
+
+
 					if(direction == 'down'){
 						if(destination.index >=1 && destination.index <3){
 						var dc2 = document.getElementById(titles[destination.index]);
@@ -1029,13 +1244,13 @@
 					setTimeout(function(){
 						dc1.classList.add('fadeOutDown');
 					},400);
-					
+
 					}
 					}
 
 
 					if(direction == 'up'){
-						
+
 
 					if(destination.index >=1 && destination.index <3){
 					var dc2 = document.getElementById(titles[destination.index]);
@@ -1057,10 +1272,10 @@
 					}
 				}
 			});
-				
 
 
-				var page2_sec = ['#aboutimg','#e2eimg','#our_workimg'];		
+
+				var page2_sec = ['#aboutimg','#e2eimg','#our_workimg'];
 		</script>
 	</body>
 </html>
