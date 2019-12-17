@@ -126,5 +126,5 @@ EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'hello@blustrings.com'# or 'tshantan24@gmail.com'
-EMAIL_HOST_PASSWORD = 'Blustrings@123'# or 'Jughead@123'
+EMAIL_HOST_USER = 'hello@blustrings.com'#
+EMAIL_HOST_PASSWORD = 'Blustrings@123'#
