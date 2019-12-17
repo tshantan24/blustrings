@@ -1,11 +1,11 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
 
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -27,6 +27,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
 
 /* line 10, D:/WEB/Projects/Slider/assets/scss/style.scss */
 * {
@@ -145,7 +147,7 @@ body {
   -webkit-text-stroke: 1px #fff;
 }
 
-/* line 122, D:/WEB/Projects/Slider/assets/scss/style.scss */ 
+/* line 122, D:/WEB/Projects/Slider/assets/scss/style.scss */
 #info {
   position: relative;
   flex: 1 1 20%;
@@ -187,10 +189,10 @@ body {
 /* line 156, D:/WEB/Projects/Slider/assets/scss/style.scss */
 #info .about {
   position: absolute;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 0.5rem;
+  right: 1rem;
   text-align: right;
-  max-width: 85%;
+  max-width: 95%;
   font-size: .8rem;
   line-height: 1.2;
 }
@@ -464,58 +466,49 @@ body {
 /* #SLIDESHOW - END */
 /* #RESPONSIVE - START*/
 /* Landscape */
-@media only screen and (max-device-width: 812px) and (orientation: landscape) {
-  /* line 432, D:/WEB/Projects/Slider/assets/scss/style.scss */
+/* @media only screen and (max-device-width: 812px) and (orientation: landscape) {
   #info .line,
   #info .about {
     display: none;
   }
-  /* line 437, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #info .slider-title-wrapper {
     top: auto;
     bottom: 2rem;
     left: calc(70% + 11px);
     transform-origin: 35% -100%;
   }
-  /* line 445, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slides-aux {
     top: 0;
   }
 }
 
 @media only screen and (max-device-width: 768px) and (orientation: portrait) {
-  /* line 451, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #info {
     display: none;
   }
-  /* line 455, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slides-aux {
     display: flex;
     align-items: flex-end;
     top: 0;
   }
-  /* line 460, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slides-aux .slide-title {
     font-size: 3rem;
   }
-  /* line 465, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slider-nav {
     right: 2rem;
   }
 }
 
 @media only screen and (max-device-width: 680px) and (orientation: portrait) {
-  /* line 473, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slides-aux .slide-title {
     font-size: 2.5rem;
   }
-  /* line 478, D:/WEB/Projects/Slider/assets/scss/style.scss */
   #slider-nav {
     top: 6rem;
     right: auto;
     left: 2rem;
   }
-}
+} */
 
 /* #RESPONSIVE - END*/
 

@@ -98,11 +98,18 @@ function heroSlider() {
         main: document.querySelector('#slides-main'),
         aux: document.querySelector('#slides-aux'),
         current: document.querySelector('#slider-nav .current'),
+        forward:document.querySelector('#forward'),
+        backward:document.querySelector('#backward'),
+        playbutton:document.querySelector('#play-b'),
+        pausebutton:document.querySelector('#pause-b'),
         handle: null,
         idle: true,
         activeIndex: -1,
-        interval: 3500
+        interval: 6000,
+        paused:false
     };
+
+    // Dec 04 - Ram - added forward and backward - query selectors for controls
 
     const setHeight = function (holder, items) {
         const h = utils().calcMaxHeight(items);
@@ -185,10 +192,15 @@ function heroSlider() {
         slider.items = slider.hero.querySelectorAll('[data-index]');
         slider.total = slider.items.length / 2;
 
-        const loop = () => changeSlide('next');
+        // uncomment below three lines to enable autoplay
 
+        
+
+        const loop = () => changeSlide('next');
         initial && requestAnimationFrame(loop);
         slider.handle = utils().requestInterval(loop, slider.interval);
+
+        
     }
 
     const loaded = function () {
@@ -218,8 +230,44 @@ function heroSlider() {
     }
 
     const start = function () {
+        // leave autoplay true - essential for init
         autoplay(true);
-        wheelControl();
+        // stopped wheel/mouse scroll control
+        //wheelControl();
+        //changeSlide('next');
+
+        // Dec 04 - Ram - gallery controls
+
+        // Event listeners for 'next' and 'prev' in the html
+        slider.forward.addEventListener('click',function(){
+            if(slider.idle){
+                stopAutoplay();
+                changeSlide('next');
+                stopAutoplay();
+            }
+        });
+        slider.backward.addEventListener('click',function(){
+            if(slider.idle){
+                stopAutoplay();
+                changeSlide('prev');
+                stopAutoplay();
+            }
+        });
+
+        // play pause actions
+        slider.playbutton.addEventListener('click',function(){
+            console.log('playing');
+            waitForIdle();
+            slider.paused = false;
+            
+        });
+
+        slider.pausebutton.addEventListener('click',function(){
+            console.log('pausing');
+            stopAutoplay();
+            slider.paused = true;
+        });
+
         window.innerWidth <= 1024 && touchControl();
         slider.aux.addEventListener('transitionend', loaded, {
             once: true

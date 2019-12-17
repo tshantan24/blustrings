@@ -1,17 +1,17 @@
 .cont {
-    min-height: 100%;
-    background-image: url('../images/contact-back.jpg');
+    min-height: 103vh; /* EDIT 1 (Changed value of min-height)*/
+    background-image: url('../images/bg6.png'); /*EDIT 2 (New Background, check in images folder)*/
 }
 
 .map-container {
-    min-height: 100%;
+    height: 103vh;  /* EDIT 3 (Changed property and value of min-height to height )*/
     width: 50%;
     display: inline-block;
 }
 
 #gmap-canvas {
     width: 100%;
-    height: 100vh;
+    height: 100%; /* EDIT 4 (Changed value of height to 100%)*/
 }
 
 .contact-head {
@@ -24,7 +24,7 @@
 .contact-container {
     height: 680px;
     width: 49%;
-    display: inline-block;    
+    display: inline-block;
     position: absolute;
     /*top: 50%;*/
     /*margin-top: -340px;*/
@@ -42,7 +42,7 @@
     overflow: auto;
     padding-top: 10px;
     position: relative;
-    
+
 }
 
 .contact-info {
@@ -94,7 +94,7 @@
     cursor: pointer;
     transition: 0.3s;
 }
-  
+
 .closebtn:hover {
     color: black;
 }
@@ -140,4 +140,41 @@
 /* icon prefix focus color */
 .input-field .prefix.active {
     color: #26a69a;
+}
+
+.contact-info a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+    .map-container {
+        display: none;
+    }
+
+    .contact-container {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 320px) {
+    .map-container {
+        display: none;
+    }
+
+    .contact-container {
+        width: 100%;
+    }
+
+    .contact-container h1{
+        font-size: 30px;
+    }
+
+    .contact-info span{
+        font-size: 10px;
+    }
+
 }
