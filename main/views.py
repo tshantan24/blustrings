@@ -6,7 +6,8 @@ from django.template import Context
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.template.loader import get_template
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, send_mail
+
 
 # Create your views here.
 def homepage(request):
@@ -14,16 +15,6 @@ def homepage(request):
                   template_name='main/index.html',)
                 #   context = {"tutorials":Tutorial.objects.all})
 
-def contact(request):
-       
-    return render(request = request,
-                  template_name='main/contact.html')
-
-def email(request):
-
-    return render(request=request,
-                    template_name='main/email.html',
-                    context={'name': "Shantan"})
 
 def handleMessages(request):
 
@@ -33,13 +24,13 @@ def handleMessages(request):
     
     try:
 
-        if request.method == "POST":
+        if request.method == "GET":
 
-            name = request.POST.get('name')
-            company = request.POST.get('company')
-            email = request.POST.get('email')
-            phone = request.POST.get('phone')
-            # message = request.POST.get('message')
+            name = request.GET.get('name')
+            company = request.GET.get('company')
+            email = request.GET.get('email')
+            phone = request.GET.get('phone')
+            # message = request.GET.get('message')
 
             print('-------------------')
             print(name)
@@ -48,18 +39,28 @@ def handleMessages(request):
             print(phone)
             # print(message)
 
+            if company == "":
+                company = "Individual"
+
             new_msg = Message(name=name, company=company, email=email, phone=phone)#, message=message)
             new_msg.save()
-            print("save happened")
-            data['err_msg'] = "Thank you for contacting us! Pleas wait for us to get back to you."
-            print('err msg should be positive')
+            print("Message has been saved.")
+            data['err_msg'] = "Thank you for contacting us! Please wait for us to get back to you."
+            # print('err msg should be positive')
 
             sendEmail(name, email)
             # send_mail( subject, email_message, email_from, recipient_list )
-            print("email done")
+            print("Email has been sent successfully")
+
+            send_mail(
+                "New user has contacted us: {}".format(company),
+                "Name: {} \nCompany: {} \nEmail: {} \nPhone: {}".format(name, company, email, phone),
+                "hello@blustrings.com",
+                ["hello@blustrings.com"],
+            )
     
     except Exception as e:
-        print(e)
+        print("Exception occured: {}".format(e))
         data['err_msg'] = str(e)
 
     return JsonResponse(data)
