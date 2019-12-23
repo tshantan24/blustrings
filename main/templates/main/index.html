@@ -5,18 +5,24 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>BluStrings</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'main/css/gallery.css' %}">
-    	<link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+
+		<!-- <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet"> -->
+		<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/style.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'main/css/animations.css' %}">
-    	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/gallery.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/css/contact.css' %}">
+
 		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    	<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
-    	<link rel="stylesheet" type="text/css" href="{% static 'main/css/materialize.css' %}" media="screen,projection">
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    	<link rel="stylesheet" type="text/css" href="{% static 'main/css/contact.css' %}">
+		<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 		<style>
 			* {
 			  box-sizing: border-box;
@@ -26,7 +32,7 @@
 			.column {
 			  float: left;
 			  width: 50%;
-			  padding: 6vh;
+			  padding: 68px 6vh 6vh;
 			  height: 100%; /* Should be removed. Only for demonstration */
 			}
 
@@ -132,6 +138,11 @@
 			}
 
 
+			.fp-tableCell>.row-non>.column>h2,
+			.contact-container h2 {
+				font-size: 38px;
+			}
+
 
 			/* Gradient backgrounds */
 			#aboutcol {
@@ -167,7 +178,8 @@
 				}
 
 				/* decrease font sizes on small screens */
-				.fp-tableCell>.row-non>.column>h2 {
+				.fp-tableCell>.row-non>.column>h2,
+				.contact-container h2 {
 					font-size: 32px;
 				}
 
@@ -188,21 +200,26 @@
 					background: linear-gradient(to bottom, rgba(255,226,64,0.75) 0%,rgba(255,220,29,0.75) 100%);
 				}
 			}
-			@media (max-width: 360px) {
-				.fp-tableCell>.row-non>.column>h2 {
-				font-size: 24px;
+			@media (max-width: 460px) {
+				.fp-tableCell>.row-non>.column>h2,
+				.contact-container h2 {
+					font-size: 28px;
+				}
+
+				.fp-tableCell>.row-non>.column:nth-child(1)>p {
+					font-size: 14px!important;
+				}
 			}
 
-			.fp-tableCell>.row-non>.column:nth-child(1)>p {
-				font-size: 12px!important;
-			}
 			@media (max-width: 320px) {
-				.fp-tableCell>.row-non>.column>h2 {
-				font-size: 24px;
-			}
+				.fp-tableCell>.row-non>.column>h2,
+				.contact-container h2 {
+					font-size: 24px;
+				}
 
-			.fp-tableCell>.row-non>.column:nth-child(1)>p {
-				font-size: 12px !important;
+				.fp-tableCell>.row-non>.column:nth-child(1)>p {
+					font-size: 12px !important;
+				}
 			}
 		</style>
   	</head>
@@ -259,7 +276,6 @@
 	      }
 	    </style>
 
-
 	   	<div id="sideNav" class="sideNav">
 	      <ul id="menu">
 	        <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
@@ -273,7 +289,6 @@
 	    </div>
 	    <span class="menu-icon" onclick="openNav()">&#9776;</span>
 
-
 	    <!-- Regular Action for Navbar -->
 	    <script>
 	      function openNav() {
@@ -283,12 +298,9 @@
 	      function closeNav() {
 	        document.getElementById("sideNav").style.width = "0";
 	      }
-		</script>
-		
-
+	    </script>
     	<!-- Full Page Wrapper -->
 		<div class="main" id="fullpage">
-
 
       	<!-- First Page -->
 			<section id="first" class="section parallax section-intro">
@@ -350,14 +362,14 @@
 				}
 			</style>
 
-
+			
       	<!-- About Us -->
 			<section class="section middle" id="middle">
 				<div  id="about" class="row-non">
 					<div id="aboutcol" class="column" style="overflow: hidden;">
 					  <!--	<br> EDIT 2(Added a <br>)-->
-						<h2 id="abouttitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh font-weight: 900">About Us</h2>
-						<p id="about-para" class="animated animatedFadeInUp" style="font-size: 20px; padding-top: 20px; font-weight: 600" ><!-- EDIT 3(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and also changed the content!!)-->BluStrings is a creation of the 21st Century, bringing in experience from different fields of science, communication and marketing; we offer a very niche end-product to our clients.
+						<h2 id="abouttitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh; font-weight: 900">About Us</h2>
+						<p id="about-para" class="animated animatedFadeInUp" style="font-size: 18px; padding-top: 20px; font-weight: 600" ><!-- EDIT 3(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and also changed the content!!)-->BluStrings is a creation of the 21st Century, bringing in experience from different fields of science, communication and marketing; we offer a very niche end-product to our clients.
 						<br> <br>
 						Having been in the industry and sharing 18+ man-years of experience, we believe in our commitment to guarantee and deliver a successful event with seamless execution; providing a mix of professional services and creativity. We have created, managed & executed a plethora of events across the board.
 						<br> <br>
@@ -366,7 +378,7 @@
 					</div>
 					<!--EDIT (slider image slideshow)-->
 					<div id="aboutimg" class="column animated animatedFadeInUp slider">
-        				<img class="bottom" src="../static/main/images/about_2.png">
+        				<img class="bottom" src="../static/main/images/about_2.jpg">
         				<img class="top" src="../static/main/images/about_1.jpg">
         				<img class="top" src="../static/main/images/about_3.jpg">
       				</div>
@@ -381,7 +393,7 @@
 						 <!-- <br> EDIT 4 (Added a <br>)-->
 						<h2 id="e2etitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh; line-height: 150%; font-weight: 900" >End to End <br> Event Solutions</h2>
 						<!-- EDIT 5(added a <br> to the title(<h2>))-->
-						<p id="e2e-para" class="animated animatedFadeInUp" style="font-size:20px; padding-top: 20px; font-weight: 600"><!-- EDIT 6(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->BluStrings understands the importance of celebrating an occasion. As the years pass, Social events, Cultural Shows, Music Festivals, Concept Events & Club Shows have only grown in number. At BluStrings we create and cater the perfect package with all-inclusive services from finalization of the venue to the complete production and execution of the show.
+						<p id="e2e-para" class="animated animatedFadeInUp" style="font-size:18px; padding-top: 20px; font-weight: 600"><!-- EDIT 6(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->BluStrings understands the importance of celebrating an occasion. As the years pass, Social events, Cultural Shows, Music Festivals, Concept Events & Club Shows have only grown in number. At BluStrings we create and cater the perfect package with all-inclusive services from finalization of the venue to the complete production and execution of the show.
 						<br><br>
 						Our team comprises of visionaries that are driven to inspire, create and add value to every project we take on with our clients. We believe in cost-effective performances, accountability and maintain timelines to deliver an excellent product as promised.
 						</p>
@@ -401,7 +413,7 @@
 				<div  id="our_work" class="row-non">
 					<div id="our_workcol" class="column" style="overflow: hidden;">
 						<h2 id="ourtitle" class="animated animatedFadeInUp" style="display:inline;border-bottom:1px solid #000;padding-bottom:1vh; font-weight: 900">Our Work</h2>
-						<p id="our-para" class="animated animatedFadeInUp" style="font-size: 20px; padding-top: 20px; font-weight: 600"><!-- EDIT 8(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->
+						<p id="our-para" class="animated animatedFadeInUp" style="font-size: 18px; padding-top: 20px; font-weight: 600"><!-- EDIT 8(added fontsize to the paragraph and set it to 20px(check the inline CSS in the <p>) and changed content!!)-->
 							Our Exhibit showcases events across the various segments we have encountered. Each event came with its own sets of challenges and risk factors. BluStrings believes in the mantra of Creation, Cultivation and Curation through which we have been able to overcome any set of challenges resulting in these events that were impeccable and glamorous to the audience.
 							<br><br>
 							BluStrings lays utmost importance on Quality, Inventiveness & Perfection to ensure that your event/show runs as crafted, whether it’s for a glamorous appeal or a night for everyone to remember.
@@ -513,9 +525,9 @@
 					.tablink:hover, .tablink:active {
 						background: transparent;
 					}
-				}	
-				#Segments {background-image: url('../static/main/images/bg8.png');}
-				#News {background-image: url('../static/main/images/bg9.png');}
+				}
+				#Segments {background-image: url('../static/main/images/bg8.jpg');}
+				#News {background-image: url('../static/main/images/bg9.jpg');}
       		</style>
 
 
@@ -642,28 +654,13 @@
 									object-fit: contain;
 								}
 							}
-							@media (max-width: 320px) {
-								.grid-container1{
-									grid-template-columns: 33.3% 33.3% 33.3%;
-									grid-template-rows: auto 200px;
-									padding: 1px;
-									grid-gap: 5;
-								}
-								.grid-container {
-									grid-template-columns: 33.3% 33.3% 33.3%;
-									grid-template-rows: auto;
-									padding: 1px;
-									grid-gap: 0;
-								}
+							@media (max-width: 420px) {
 								.grid-item {
-									padding: 12px 16px;
+									padding: 6px 8px;
 								}
 								.service-image{
-									height: 100%;
-									width: 100%;
-									max-width: 50px;
-									max-height: 50px;
-									object-fit: contain;
+									max-width: 40px;
+									max-height: 40px;
 								}
 							}
 						</style>
@@ -747,174 +744,43 @@
 			</section>
 
 
-      		<!-- Gallery -->
-      		<style>
-        		#hero-slider:not(.loaded) .slide:not(:first-child) {
-          		visibility: visible;
-        		}
-      		</style>
+			<!-- Gallery -->
 			<section class="section">
 				<div id="hero-slider">
-					<div id="slideshow">
-						<div id="slides-main" class="slides">
-							<div class="slide" data-index="0">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="1">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="2">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="3">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="4">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="5">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="6">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="7">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
-								</div>
-							</div>
-							<div class="slide" data-index="8">
-								<div class="abs-mask">
-									<div class="slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
-								</div>
-							</div>
-						</div>
-						<div id="slides-aux" class="slides mask">
-							<h2 class="slide-title slide" data-index="0"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="1"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="2"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="3"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="4"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="5"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="6"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="7"><a href="#"></a></h2>
-							<h2 class="slide-title slide" data-index="8"><a href="#"></a></h2>
-						</div>
+					<div id="gallery-slides" class="owl-theme">
+						<div class="item slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
+						<div class="item slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
 					</div>
-					<div id="info">
-						<div class="slider-title-wrapper">
-							<span class="line"></span>
-							<h1 class="slider-title">
-								<span>GALLERY</span>
-							</h1>
-						</div>
-						<!--
-
-							Dec 4 - Edit Ram
-							Forward and Backward controls for gallery
-							Autoplay disabled
-
-						 -->
-						 <style>
-							 #info .about {
-									right: 1rem;
-									left: 1rem;
-									display: flex;
-									justify-content: center;
-									
-							}
-								/* Dec 4 - Ram - styling for controls */
-								.controls-left , .controls-right{
-									position: relative;
-									font-size:1.8rem;
-									font-weight: bolder;
-									color: black;
-									padding: 10px;
-
-								}
-
-								.controls-left:hover,.controls-right:hover{
-									color: white;
-								}
-
-								@media only screen and (max-width: 920px) {
-									#info {
-										display: flex;
-										position: absolute;
-										width: 100%;
-										height: 100vh;
-										z-index: 500;
-										background: transparent;
-										justify-content: center;
-									}
-
-									#info .slider-title-wrapper {
-										display: none;
-									}
-
-									#info .about {
-										left: initial;
-										right: initial;
-										background: rgba(255,255,255,0.5);
-										padding: 0px 12px;
-										border-radius: 36px;
-										display: flex;
-										align-items: center;
-										justify-content: space-around;
-									}
-
-									#slider-nav {
-										top: 6rem;
-										right: auto;
-										left: 2rem;
-									}
-								}
-							</style>
-
-						<div class="about">
-							<br> <br>
-							<a class="controls-left" href="#" id="backward"><</a>
-							<a id="pause-b" href="#" class="controls-left">  &#x2759;&#x2759; </a>
-							<a id="play-b" href="#" class="controls-left"> &#x25B6; </a>
-							<a class="controls-right" href="#" id="forward">></a>
-						</div>
-						<!-- Edit ends here -->
+					<div id="gallery-title">
+						<h1>GALLERY</h1>
+						<span></span>
 					</div>
-
-					<nav id="slider-nav" class="browser-default">
-						<span class="current">01</span>
-						<span class="sep"></span>
-						<span class="total">09</span>
-					</nav>
+					<div id="gallery-info"></div>
+					<div id="gallery-controls">
+						<span class="controls" href="#" id="backward">&lt;</span>
+						<span id="play-b" href="#" class="controls"> ❙❙ </span>
+						<span class="controls" href="#" id="forward">&gt;</span>
+					</div>
 				</div>
-      		</section>
+			</section>
 
       		<!-- Contact US -->
 			<section class="section">
 				<div class="row cont">
 					<div class="map-container">
-						<iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0"> <!-- EDIT 14 , changed "scrolling" to "yes"-->
-						</iframe>
-						<a href="https://www.enable-javascript.net"></a>
+						<!-- Filled in with JS -->
 					</div>
 
 					<div class="contact-container">
 						<div class="row contact-head">
-							<h1 style="border-bottom: 5px solid #000;padding-bottom:1vh; width: 100%;">Contact Us</h1>
+							<h2 style="border-bottom: 5px solid #000;padding-bottom:1vh; width: 100%;">Contact Us</h2>
 						</div>
 						<div class="row contact-form z-depth-2">
 							<form action="" class="col s12" id="contact">
@@ -950,7 +816,7 @@
 								</div>
 								<div id="alerts" class="row hidden">
 									<div class="alert col s12">
-										<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+										<span class="closebtn" id="alertClose">&times;</span>
 										<span id="error-message"></span>
 									</div>
 								</div>
@@ -971,6 +837,10 @@
 							</div>
             			</div>
 			            <script>
+
+						  $('#alertClose').click(function(e){
+							$('#alerts').hide();
+						  });
 
 			              var csrftoken = Cookies.get('csrftoken');
 
@@ -997,8 +867,8 @@
 			                //var message = $('#message').val();
 
 			                $.ajax({
-			                  type: "get",
-			                  url: 'send/',
+			                  type: "post",
+			                  url: 'test/',
 			                  datatype:'jsonp',
 			                  data: {
 			                  'name': name,
@@ -1096,17 +966,16 @@
 			</script>
     	</div>
 
-		<script type="text/javascript" src="{% static 'main/js/gallery.js' %}"></script>
-    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.min.js"></script>
-		<script type="text/javascript" src="{% static 'main/js/particles.js' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/lottie.js' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/preloader.json' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/logo.json' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/lottie-animations.js' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/app.js' %}"></script>
-    	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
-		<script type="text/javascript" src="{% static 'main/js/fullpage.extensions.min.js' %}"></script>
-		<script type="text/javascript" src="{% static 'main/js/fullpage.js' %}"></script>
+		<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.8/fullpage.extensions.min.js"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.9/lottie.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script src="{% static 'main/js/preloader.json' %}"></script>
+		<script src="{% static 'main/js/logo.json' %}"></script>
+		<script src="{% static 'main/js/app.js' %}"></script>
 
 		<script>
 			var secs = ['#first','#middle','#last'];
@@ -1137,7 +1006,7 @@
         	//lockAnchors:true,
 			parallaxOptions: {type: 'reveal', percentage: 62, property: 'translate'},
         	scrollingSpeed:900,
-        	controlArrows: false,
+					controlArrows: false,
         	menu: '#menu',
 				afterLoad:function(origin,destination,direction){
 
