@@ -1,6 +1,6 @@
 .cont {
     min-height: 103vh; /* EDIT 1 (Changed value of min-height)*/
-    background-image: url('../images/bg6.png'); /*EDIT 2 (New Background, check in images folder)*/
+    background-image: url('../images/bg6.jpg'); /*EDIT 2 (New Background, check in images folder)*/
 }
 
 .map-container {

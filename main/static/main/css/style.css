@@ -54,6 +54,7 @@ img {
   backface-visibility: hidden;
   transition: all 1.4s cubic-bezier(0.22, 0.44, 0, 1);
   /* transform: translateY(-2rem); */
+  padding: 0;
 }
 
 .section.section-intro {
@@ -299,7 +300,6 @@ img {
   font-size: 14px !important;
   margin-bottom: 0;
 }
-
 
 /* Footer responsive */
 
