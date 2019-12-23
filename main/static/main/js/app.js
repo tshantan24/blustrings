@@ -121,6 +121,9 @@ window.addEventListener('load', function() {
 }, {once: true});
 
 
-window.addEventListener('resize', function() {
-  window.location.hash = '#home';
-});
+// window.addEventListener('resize', function() {
+//   window.location.hash = '#home';
+//   if(window.location.hash = '#contactUs'){
+//     return;
+//   }
+// });
