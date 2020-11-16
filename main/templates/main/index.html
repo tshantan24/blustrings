@@ -4,7 +4,6 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" href="{% static 'main/images/img_1.png' %}	">
 		<title>BluStrings</title>
 
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css">
@@ -222,6 +221,11 @@
 					font-size: 12px !important;
 				}
 			}
+			@media (max-width: 415px) and (max-height: 900px){
+				.column{
+					padding: 88px 6vh 6vh;
+				}
+			}
 		</style>
   	</head>
 	<body>
@@ -379,9 +383,7 @@
 					</div>
 					<!--EDIT (slider image slideshow)-->
 					<div id="aboutimg" class="column animated animatedFadeInUp slider">
-        				<img class="bottom" src="../static/main/images/about_2.jpg">
-        				<img class="top" src="../static/main/images/about_1.jpg">
-        				<img class="top" src="../static/main/images/about_3.jpg">
+        				<!-- Filled it in JS-->
       				</div>
 				</div>
 			</section>
@@ -401,9 +403,7 @@
 					</div>
 					<!--EDIT (slider image slideshow)-->
 					<div id="e2e1img" class="column animated animatedFadeInUp slider">
-        				<img class="bottom" src="../static/main/images/end_2.jpg">
-        				<img class="top" src="../static/main/images/end_1.jpg">
-        				<img class="top" src="../static/main/images/end_3.jpg">
+						<!-- Filled it in JS-->
       				</div>
 				</div>
       		</section>
@@ -422,9 +422,7 @@
 					</div>
 					<!--EDIT (slider image slideshow)-->
 					<div id="our_img" class="column animated animatedFadeInUp slider">
-        				<img class="bottom" src="../static/main/images/our_work1.jpg">
-        				<img class="top" src="../static/main/images/our_work2.jpg">
-        				<img class="top" src="../static/main/images/our_work3.jpg">
+						<!-- Filled it in JS-->
       				</div>
 				</div>
       		</section>
@@ -498,7 +496,35 @@
 						background: transparent;
 					}
 				}
+				@media (max-width: 415) and (max-height: 900px) {
+					.tablink {
+						background-color: transparent;
+						color: #404040;
+						width: auto;
+						padding: 0.45em 1em;
+						font-size: 20px;
+						margin: 78px 0 1em;
+						border-radius: 12px;
+					}
 
+					.tablink:nth-child(1) {
+						margin-left: 1em;
+					}
+
+					.tablink:nth-child(1).tabactive {
+						background: #bce6aa;
+						color: #376325;
+					}
+
+					.tablink:nth-child(2).tabactive {
+						background: #f3dbb8;
+						color: #905600;
+					}
+
+					.tablink:hover, .tablink:active {
+						background: transparent;
+					}
+				}
 				@media (max-width: 360px) {
 					.tablink {
 						background-color: transparent;
@@ -749,15 +775,16 @@
 			<section class="section">
 				<div id="hero-slider">
 					<div id="gallery-slides" class="owl-theme">
-						<div class="item slide-image" style="background-image: url(../static/main/images/1.jpg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/2.jpg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/4.jpeg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/5.jpeg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/6.jpg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/7.jpeg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/8.jpeg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/9.jpeg)"></div>
-						<div class="item slide-image" style="background-image: url(../static/main/images/18.jpeg)"></div>
+						<!-- Images are being loaded from app.js, lazy loading -->
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
+						<div class="item slide-image"></div>
 					</div>
 					<div id="gallery-title">
 						<h1>GALLERY</h1>
@@ -794,7 +821,7 @@
 									</div>
 									<div class="input-field col s6">
 										<i class="material-icons prefix">work</i>
-										<input id="icon_company" type="tel" class="validate" name="company">
+										<input id="icon_company" type="text" class="validate" name="company">
 										<label for="icon_company">Company</label>
 									</div>
 								</div>
@@ -812,8 +839,16 @@
 								</div>
 								<div class="row">
 									<div class="input-field col s12">
-										<button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
+										<div id="formsubmitbutton">
+											<button class="btn waves-effect waves-light sub" id="submit" type="submit" name="submit">Submit<i class="material-icons right">send</i>
 										</button>
+										</div>
+										<center>
+										<div id="buttonreplacement" style="width: 5%; height: 5%; display:none;">
+											<img src="../static/main/images/submit.gif" alt="loading...">
+										</div>
+										</center>
+										
 									</div>
 								</div>
 								<div id="alerts" class="row hidden">
@@ -859,8 +894,7 @@
 			                  }
 			                }
 			              });
-
-
+			    
 			              $('#contact').on('submit',function(e){
 			                e.preventDefault();
 			                var name = $('#icon_name').val();
@@ -876,8 +910,10 @@
                             if(nameRegx.test(name)){
                               if(emailRegx.test(email)) {
                                 if(phoneRegx.test(phone)) {
+                                  ButtonClicked();
+                                  var FirstLoading = true;
+							      RestoreSubmitButton();
 								  console.log('All inputs are valid');
-					
 								  $('#alerts').hide();
 								  
                                   $.ajax({
@@ -896,7 +932,7 @@
                                     $('#alerts').show();
                                     $('#error-message').text(response.err_msg);
                                   });
-
+                                  document.onfocus = RestoreSubmitButton;
                                 } else {
                                   $('#alerts').show();
 			                      $('#error-message').text('Please enter a vaild phone number.');
@@ -912,7 +948,23 @@
 			                  $('#error-message').text('Please enter a vaild name.');
                             }
 			              });
-
+			              function ButtonClicked()
+							{
+							   document.getElementById("formsubmitbutton").style.display = "none"; // to undisplay
+							   document.getElementById("buttonreplacement").style.display = ""; // to display
+							   return true;
+							}
+							
+						  function RestoreSubmitButton()
+							{
+							   if( FirstLoading )
+							   {
+							      FirstLoading = false;
+							      return;
+							   }
+							   document.getElementById("formsubmitbutton").style.display = ""; // to display
+							   document.getElementById("buttonreplacement").style.display = "none"; // to undisplay
+							} 	
 			            </script>
          			</div>
           		</div>
@@ -1036,6 +1088,7 @@
         		scrollingSpeed:900,
 				controlArrows: false,
         		menu: '#menu',
+			normalScrollElements: '#contact',
 				afterLoad:function(origin,destination,direction){
 
 						console.log('origin:'+origin.index+'dest:'+destination.index);
