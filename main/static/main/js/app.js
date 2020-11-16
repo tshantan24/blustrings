@@ -16,30 +16,34 @@ particlesJS.load('particles-js', '../static/main/js/particlesjs-config.json', fu
 });
 
 
+var scale = 'scale(1)';
+document.body.style.webkitTransform =  scale;    // Chrome, Opera, Safari
+document.body.style.msTransform =   scale;       // IE 9
+document.body.style.transform = scale;     // General
 
 // Lottie animations
 // Requires all JSON payloads
 var preloaderAnimation = lottie.loadAnimation({
-	container: document.getElementById('preloader'),
-	renderer: 'svg',
-	loop: true,
-	autoplay: true,
-	animationData: preloader
+  container: document.getElementById('preloader'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  animationData: preloader
 });
 
 var logoAnimation = lottie.loadAnimation({
-	container: document.querySelector('.intro-logo'),
-	renderer: 'svg',
-	loop: true,
-	autoplay: false,
-	animationData: logo
+  container: document.querySelector('.intro-logo'),
+  renderer: 'svg',
+  loop: true,
+  autoplay: false,
+  animationData: logo
 });
 
 
 window.addEventListener('load', function() {
 
   // Take a second, let everything setup or we create jank
-	setTimeout(function() {
+  setTimeout(function() {
     // Fade out preloader
     $("#preloader").fadeOut("slow");
 
@@ -55,8 +59,24 @@ window.addEventListener('load', function() {
     }, 500);
   }, 1000);
 
-  // Lazy set maps
+  // Lazy set maps and images
   setTimeout(function() {
+    $('.slider')[0].innerHTML = '<img class="bottom" src="../static/main/images/about_2.jpg"> <img class="top" src="../static/main/images/about_1.jpg"> <img class="top" src="../static/main/images/about_3.jpg">';
+    $('.slider')[1].innerHTML = '<img class="bottom" src="../static/main/images/end_2.jpg"> <img class="top" src="../static/main/images/end_1.jpg"> <img class="top" src="../static/main/images/end_3.jpg">';
+    $('.slider')[2].innerHTML = '<img class="bottom" src="../static/main/images/our_work1.jpg"> <img class="top" src="../static/main/images/our_work2.jpg"> <img class="top" src="../static/main/images/our_work3.jpg">';
+    $('.item')[0].style.backgroundImage = 'url(../static/main/images/1.jpg)';
+    $('.item')[1].style.backgroundImage = 'url(../static/main/images/2.jpg)';
+    $('.item')[2].style.backgroundImage = 'url(../static/main/images/3.jpg)'; 
+    $('.item')[3].style.backgroundImage = 'url(../static/main/images/4.jpeg)';
+    $('.item')[4].style.backgroundImage = 'url(../static/main/images/5.jpg)';
+    $('.item')[5].style.backgroundImage = 'url(../static/main/images/6.jpg)';
+    $('.item')[6].style.backgroundImage = 'url(../static/main/images/7.jpeg)';
+    $('.item')[7].style.backgroundImage = 'url(../static/main/images/8.jpeg)';
+    $('.item')[8].style.backgroundImage = 'url(../static/main/images/9.jpeg)';
+    $('.item')[9].style.backgroundImage = 'url(../static/main/images/18.jpeg)';
+  }, 5000);
+
+  setTimeout(function() { 
     $('.map-container')[0].innerHTML = '<iframe id="gmap-canvas" src="https://maps.google.com/maps?q=Blustrings&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0"></iframe>';
   }, 2500);
 
@@ -88,7 +108,7 @@ window.addEventListener('load', function() {
     if (index <= 0) {
         index += count;
     }
-    $('#gallery-info').html('<span>' + index + '</span> — <span>' + count + '</span>');
+    $('#gallery-info').html('<span>' + index + '</span> — <span>' + count + '</span>')
     $owl.trigger('stop.owl.autoplay');
     $owl.trigger('play.owl.autoplay');
   });
@@ -121,9 +141,3 @@ window.addEventListener('load', function() {
 }, {once: true});
 
 
-// window.addEventListener('resize', function() {
-//   window.location.hash = '#home';
-//   if(window.location.hash = '#contactUs'){
-//     return;
-//   }
-// });

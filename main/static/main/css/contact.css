@@ -38,7 +38,7 @@
     padding: 10px 20px;
     width: 90%;
     margin: auto;
-    height: 40%;
+    height: 43%;
     overflow: auto;
     padding-top: 10px;
     position: relative;
@@ -120,27 +120,27 @@
 }
 
 /* label underline focus color */
-.input-field input[type=text]:focus {
+/*.input-field input[type=text]:focus {
     border-bottom: 1px solid #26a69a;
     box-shadow: 0 1px 0 0 #26a69a;
-}
+}*/
 
 /* valid color */
-.input-field input[type=text].valid {
+/*.input-field input[type=text].valid {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
-}
+}*/
 
 /* invalid color */
-.input-field input[type=text].invalid {
+/*.input-field input[type=text].invalid {
     border-bottom: 1px solid #000;
     box-shadow: 0 1px 0 0 #000;
-}
+}*/
 
 /* icon prefix focus color */
-.input-field .prefix.active {
+/*.input-field .prefix.active {
     color: #26a69a;
-}
+}*/
 
 .contact-info a {
     color: inherit;
