@@ -25,7 +25,7 @@ SECRET_KEY = '4_u2st#t2c@w14h+a_@0jr)v!f3g28m=6n-l*lzn0)&x@ef$jh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.blustrings.com',]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -119,9 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/blustrings/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/var/www/blustrings/media/'
 
 #Email Settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -129,5 +126,5 @@ EMAIL_HOST = 'smtp.zoho.com'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_ID')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = 'hello@blustrings.com'#
+EMAIL_HOST_PASSWORD = 'Blustrings@123'#
